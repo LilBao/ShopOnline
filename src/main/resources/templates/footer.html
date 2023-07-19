@@ -1,0 +1,42 @@
+<!-- Footer -->
+<footer class="container-fluid">
+    <div class="container" ng-controller="footerCtrl">
+        <div class="row">
+            <div class="col-xs-4 col-sm-6 col-md-3">
+                <div class="mt-4">
+                    <h5>Kết nối với chúng tôi</h5>
+                </div>
+                <p>
+                    Chrome Heart là brand phụ kiện thành lập bởi những người có niềm đam mê với trang sức, yêu thích
+                    các
+                    chế tác được tạo thủ công, mong muốn đưa các tác phẩm vươn ra tầm thế giới.
+                </p>
+                <p>
+                    Hotline hỗ trợ <br>
+                    -HCM:<br>
+                    -Hà Nội:
+                </p>
+                <p>
+                    Email: baonvps24728@fpt.edu.vn
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-3" ng-repeat="x in ft">
+                <div class="mt-4">
+                    <h5>{{x.title}}</h5>
+                </div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link1}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link2}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link3}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link4}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link5}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link6}}</a></div>
+                <div class="p-2 bd-highlight"><a href="">{{x.link7}}</a></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel heading text-center">
+                <p>Copyright &copy; 2023. Chrome Heart</p>
+            </div>
+        </div>
+    </div>
+</footer>

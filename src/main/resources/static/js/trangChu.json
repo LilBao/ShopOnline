@@ -1,0 +1,173 @@
+{
+        "dmjs": [
+                {
+                        "img": "bannerKhuyen.jpg",
+                        "title": "KHUYÊN TAI",
+                        "btn": "Xem Thêm"
+                },
+                {
+                        "img": "bannerNhan.jpg",
+                        "title": "NHẪN",
+                        "btn": "Xem Thêm"
+                },
+                {
+                        "img": "bannerDayChuyen.jpg",
+                        "title": "DÂY CHUYỀN",
+                        "btn": "Xem Thêm"
+                },
+                {
+                        "img": "bannerVong.jpg",
+                        "title": "VÒNG",
+                        "btn": "Xem Thêm"
+                }
+        ],
+        "bannerjs": [
+                {
+                        "active": "active",
+                        "img": "banner2.jpg"
+                },
+                {
+                        "img": "bannerr.webp"
+                },
+                {
+                        "img": "banner1.webp"
+                }
+        ],
+        "spnbjs": [
+                {
+                        "img": "KoiRing4x5.mp4",
+                        "title": "NISHIKIKOI RING",
+                        "toast": "Theo truyền thuyết, cá Koi là hình ảnh ẩn dụ về sự quyết tâm và kiên trì bằng cách bơi ngược dòng, không ngừng di chuyển, chống chọi với dòng nước. Lấy cảm hứng từ hình tượng đó,chúng tôi xây dựng lên một tác phẩm nghệ thuật với tinh thần đề cao sự kiên trì, không ngừng cố gắng vươn lên để vượt qua bão tố. Với hy vọng tiến vào tương lai hưng thịnh."
+                },
+                {
+                        "img": "dragonShip.mp4",
+                        "title": "THUAN THIEN NECKLACE",
+                        "toast": "Thuận Thiên kiếm hay còn được biết đến là thanh kiếm thần Thuận -thanh kiếm huyền thoại của vua Lê Lợi, anh hùng của dân tộc Việt, người đã đem lại độc lập cho Việt Nam từ ách cai trị của nhà Minh phương Bắc. Dựa vào sức mạnh ẩn chứa đó, định hướng phát triển ý niệm về sức mạnh nội tại bên trong con người Việt Nam thành một chế tác độc nhất vô nhị."
+                }
+        ],
+        "imgSpJs":[
+                {
+                        "active": "active",
+                        "img1": "hinhmua.jpg",
+                        "img2":"hm2.jpg"
+                },
+                {
+                        "img1": "hm3.jpg",
+                        "img2": "hm5.jpg"
+                },
+                {
+                        "img1": "hinhmua.jpg",
+                        "img2": "hm3.jpg"
+                }
+        ],
+        "desJs":[
+                {
+                        "title1": "Chrome Heart",
+                        "title2": "Chrome hearts Bubblegum Cross Ring with diamond",
+                        "price": "16.000.000",
+                        "size":"Cỡ",
+                        "btn":"Thêm vào giỏ hàng",
+                        "title3":"Chrome Heart - Sản phẩm bán chạy nhất",
+                        "title4":"Chế tác được ra mắt lần mang tên Chrome Heart Ring Cross Diamond - Mang biết tượng thánh giá.",
+                        "title5":"Sản phẩm mang cảm giác sang chảng và pha chút vintage",
+                        "img":"bestSeller.jpg",
+                        "end":"Xem chi tiết sản phẩm"
+                }
+        ],
+        "sizeJs":["Size 5","Size 6","Size 7","Size 8","Size 9"],
+        "csjs":[
+                {
+                        "icon":"bi bi-airplane-fill",
+                        "title":"GIAO HÀNG QUỐC TẾ"
+                },{
+                        "icon":"bi bi-calendar-heart-fill",
+                        "title":"ĐỔI TRẢ TRONG 7 NGÀY"
+                },{
+                        "icon":"bi bi-box2-heart-fill",
+                        "title":"CAM KẾT CHẤT LƯỢNG SẢN PHẨM"
+                },{
+                        "icon":"bi bi-shield-lock-fill",
+                        "title":"BẢO VỆ THÔNG TIN KHÁCH HÀNG"
+                }
+        ],
+        "insjs": [
+                {
+                        "img": "ins0.jpg",
+                        "ins": "logoins.png"
+                },
+                {
+                        "img": "ins1.jpg",
+                        "ins": "logoins.png"
+                },
+                {
+                        "img": "ins2.jpg",
+                        "ins": "logoins.png"
+                },
+                {
+                        "img": "ins3.jpg",
+                        "ins": "logoins.png"
+                }
+        ],
+        "fbjs": [
+                {
+                        "img": "fb1.png",
+                        "name": "Low-G"
+                },
+                {
+                        "img": "fb2.png",
+                        "name": "Phương Khắc"
+                },
+                {
+                        "img": "fb3.png",
+                        "name": "Phương Khắc"
+                },
+                {
+                        "img": "fb4.png",
+                        "name": "Đoàn Yến Nhi"
+                },
+                {
+                        "img": "fb5.png",
+                        "name": "Member"
+                },
+                {
+                        "img": "fb6.jpg",
+                        "name": "Member"
+                },
+                {
+                        "img": "fb7.jpg",
+                        "name": "Member"
+                },
+                {
+                        "img": "fb8.jpg",
+                        "name": "Member"
+                },
+                {
+                        "img": "fb9.jpg",
+                        "name": "Phương Khắc"
+                }
+        ],
+        "ftjs":[
+                {
+                        "title": "Chăm sóc khách hàng",
+                        "link1": "HƯỚNG DẪN THANH TOÁN",
+                        "link2": "GIAO HÀNG",
+                        "link3": "CHÍNH SÁCH BẢO HÀNH",
+                        "link4": "CHÍNH SÁCH ĐỔI TRẢ",
+                        "link5": "CHÍNH SÁCH BẢO MẬT",
+                        "link6": "ĐIỀU KHOẢN DỊCH VỤ",
+                        "link7": "CHÍNH SÁCH HOÀN TRẢ"
+                },
+                {
+                        "title": "Mạng xã hội",
+                        "link1": "CÂU CHUYỆN VỀ CHÚNG TÔI",
+                        "link2": "HỆ THỐNG CỬA HÀNG",
+                        "link3": "TUYỂN DỤNG",
+                        "link4": "MEMBERSHIP"
+                },
+                {
+                        "title": "Chăm sóc khách hàng",
+                        "link1": "INSTAGRAM",
+                        "link2": "FACEBOOK"
+                }
+        ]
+}

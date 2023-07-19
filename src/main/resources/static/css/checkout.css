@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    color: snow;
+}
+
+body a {
+    text-decoration: none;
+    font-size: small;
+}
+
+.card-body {
+    border-top: 1px solid;
+}
+
+.btn {
+    background-color: transparent;
+    border-color: snow;
+    font-weight: bold;
+}
+
+.btn:hover {
+    border-color: snow;
+    background-color: snow;
+    color: black;
+}
+
+.card {
+    border: 1px solid;
+    background-color: black;
+}
+
+tr {
+    color: snow;
+}
+
+.iconCs {
+    font-size: xx-large;
+    color: snow;
+}
+
+.inputCss::placeholder {
+    color: snow!important;
+}
+
+.inputCss {
+    color: snow;
+    background-color: transparent;
+}
+.inputCss:focus{
+    background-color: transparent;
+    color: snow;
+    border-color: snow;
+}
+option{
+    color: snow;
+    background-color: black;
+}
+
+/* TTDH */
+#accordion .card {
+    border: none;
+}
+
+#accordion .card-header a {
+    background-color: gray;
+}
+
+#accordion .card-body {
+    border-top: none;
+}

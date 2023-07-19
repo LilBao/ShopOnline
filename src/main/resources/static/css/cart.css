@@ -1,0 +1,66 @@
+body{
+    background-color: black;
+    color: snow!important;
+}
+/*  */
+
+.table td{
+    color: snow!important;
+}
+
+table img{
+    height: 100px;
+    object-fit: cover;
+}
+.soluong{
+    margin: 0px!important;
+}
+.soluong input{
+    text-align: center;
+    color: snow;
+    background-color: transparent;
+    width:1rem!important;
+}
+.soluong input:focus{
+    color: snow;
+    background-color: transparent;
+    border-color: snow;
+}
+.soluong .btn{
+    border-color: snow;
+    color: snow;
+    border-radius: 0px;
+}
+.soluong .btn:hover{
+    color: snow;
+}
+#note{
+    background-color: transparent;
+}
+
+textarea{
+    color: snow!important;
+}
+textarea:focus{
+    border-color: snow;
+    color: snow!important;
+}
+/*  */
+.card{
+    background-color: transparent;
+    border: 1px solid;
+}
+.card-header{
+    border-bottom:1px solid;
+}
+.card button{
+    background-color: snow;
+    color: black;
+    border: 1px solid;
+}
+.card button:hover{
+    border: 1px solid;
+}
+.card a{
+    color: snow;
+}

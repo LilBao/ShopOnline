@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="js/trangChu.js"></script>
+
+</head>
+
+<body ng-app="myApp" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+    <!-- END THANH NAV -->
+    <!-- BANNER -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" ng-controller="bannerCtrl">
+            <div class="carousel-item {{x.active}}" ng-repeat="x in banners">
+                <img src="images/{{x.img}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- END BANNER -->
+    <!-- DANH MỤC SẢN PHẨM -->
+    <section>
+        <div class="container">
+            <div>
+                <h2 style="color: snow;">DANH MỤC SẢN PHẨM</h2>
+            </div>
+            <div class="row" ng-controller="dmCtrl">
+                <div class="col-xs-4 col-sm-6 col-md-3 sanPham" ng-repeat="x in danhMuc">
+                    <a class="zoom" href="">
+                        <div class="card">
+                            <img class="card-img-top" src="images/{{x.img}}" alt="Card image">
+                            <div class="card-img-overlay">
+                                <div class="cardCss">
+                                    <p class="card-title">{{x.title}}</p>
+                                    <button class="btn" type="button">{{x.btn}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BEST SELLER -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-md-8">
+                    <div class="container" ng-controller="imgSpCtrl">
+                        <div class="row">
+                            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                                <!-- The slideshow/carousel -->
+                                <a href="">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item {{x.active}}" ng-repeat="x in imgSp">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <img class="w-100 px-0 pb-3" src="images/{{x.img1}}" alt="">
+                                                </div>
+                                                <div class="col-6">
+                                                    <img class="w-100" src="images/{{x.img2}}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- Left and right controls/icons -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#demo"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#demo"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-4 bestSeller" ng-controller="desCtrl">
+                    <div ng-repeat="x in des">
+                        <div class="mb-3">
+                            <a href="" class="title">
+                                <span>{{x.title1}}</span>
+                                <h5>{{x.title2}}</h5>
+                            </a>
+                            <p>{{x.price}}</p>
+                        </div>
+                        <div class="mb-3">
+                            <form ng-controller="sizeCtrl">
+                                {{x.size}}<br>
+                                <label class="mx-2" ng-repeat="s in size"><input name="size" type="radio">{{s}}</label>
+                            </form>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-xs-10 col-sm-8 col-md-4">
+                                <div class="input-group mb-3 soluong">
+                                    <button class="btn" type="button">-</button>
+                                    <input type="text" value="1" class="form-control">
+                                    <button class="btn" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-sm-4 col-md-8">
+                                <div class="">
+                                    <button class="them" type="button" class="btn d-flex">{{x.btn}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <h6>{{x.title3}}</h6>
+                            <p>{{x.title4}}</p>
+                            <p>{{x.title5}}</p>
+                            <a href="" class="store">
+                                <img class="w-100" src="images/{{x.img}}" style="height:400px; object-fit : cover"
+                                    alt="">
+                                {{x.end}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- SẢN PHẨM NỔI BẬT -->
+    <section>
+        <div class="container" ng-controller="spnbCtrl">
+            <div>
+                <h2 style="color: snow;">SẢN PHẨM NỔI BẬT</h2>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-6 col-md-6" ng-repeat="x in spnb">
+                        <div class="card gif">
+                            <a href="">
+                                <video class="card-img-top" autoplay loop src="images/{{x.img}}"
+                                    alt="Card image"></video>
+                            </a>
+                            <div class="card-body gifBody">
+                                <h4 class="card-title">{{x.title}}</h4>
+                                <p class="card-text">{{x.toast}}
+                                </p>
+                                <a href="#" class="btn btn-primary">MUA NGAY</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Instagram -->
+    <div>
+        <div>
+            <h2 class="text-center" style="color: snow;">SHOP BY INSTAGRAM</h2>
+        </div>
+        <div class="container-fluid" ng-controller="insCtrl">
+            <div class="row">
+                <div class="col-md-3 px-0" ng-repeat="x in ins">
+                    <div class="card btn hoverIns" onclick="toast()">
+                        <img class=" insImage" src="images/{{x.img}}" alt="Card image">
+                        <img class="logoIns" src="images/{{x.ins}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast">
+            <div class="toast-header">
+                <strong class="me-auto">Toast Header</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                <p>Some text inside the toast body</p>
+            </div>
+        </div>
+    </div>
+    <!-- FeedBack -->
+
+    <section class="mx-0">
+        <div class="container-fluid" ng-controller="fbCtrl">
+            <div>
+                <h2 class="text-center" style="color: snow;">FEEDBACK</h2>
+            </div>
+            <div class="dflex">
+                <a href="" class="zoomFb text-center m-2" ng-repeat="x in fb">
+                    <div class="oChua">
+                        <img src="images/{{x.img}}" alt="">
+                    </div>
+                    <p>{{x.name}}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Chính sách -->
+    <section>
+        <div class="container-fluid">
+            <div class="container" ng-controller="csCtrl">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 " ng-repeat="x in cs">
+                        <div class="d-flex align-items-center">
+                            <i class="{{x.icon}} px-2 iconCs"></i>
+                            <h6 class="cs">{{x.title}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
