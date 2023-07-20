@@ -1,11 +1,11 @@
 body{
     background-color: black;
-    color: snow!important;
+    color: white!important;
 }
 /*  */
 
 .table td{
-    color: snow!important;
+    color: white!important;
 }
 
 table img{
@@ -22,39 +22,39 @@ table img{
     width:1rem!important;
 }
 .soluong input:focus{
-    color: snow;
+    color: white;
     background-color: transparent;
-    border-color: snow;
+    border-color: white;
 }
 .soluong .btn{
-    border-color: snow;
-    color: snow;
+    border-color: white;
+    color: white;
     border-radius: 0px;
 }
 .soluong .btn:hover{
-    color: snow;
+    color: white;
 }
 #note{
     background-color: transparent;
 }
 
 textarea{
-    color: snow!important;
+    color: white!important;
 }
 textarea:focus{
-    border-color: snow;
-    color: snow!important;
+    border-color: white;
+    color: white!important;
 }
 /*  */
 .card{
     background-color: transparent;
-    border: 1px solid;
+    border: 1px solid white !important;
 }
 .card-header{
     border-bottom:1px solid;
 }
 .card button{
-    background-color: snow;
+    background-color: white;
     color: black;
     border: 1px solid;
 }
@@ -62,5 +62,5 @@ textarea:focus{
     border: 1px solid;
 }
 .card a{
-    color: snow;
+    color: white;
 }

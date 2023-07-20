@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <title>Colo Shop Categories</title>
 <meta charset="utf-8">
@@ -20,20 +20,20 @@ crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="css/categories_responsive.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/trangChu.js"></script>
 </head>
 
-<body>
-
+<body ng-app="myApp">
+	
 <div class="super_container">
-
-	<!-- Header -->
-	<div class="fs_menu_overlay"></div>
-
-	<!-- Hamburger Menu -->
+<section th:replace="~{nav:: header}">
+	</section>
+	<!-- Menu -->
 	<div class="container product_section_container">
 		<div class="row">
 			<div class="col product_section clearfix">
-
 				<!-- Breadcrumbs -->
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
@@ -413,10 +413,8 @@ crossorigin="anonymous"></script>
 	</div>
 
 	<!-- Footer -->
-
-	<footer class="footer">
-		
-	</footer>
+	<section th:replace="~{footer:: footer}">
+	</section>
 
 </div>
 

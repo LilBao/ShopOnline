@@ -21,6 +21,7 @@
 </head>
 
 <body>
+ <header  class="px-0 py-0">
     <div class="d-flex justify-content-between bg-dark text-center text-white pt-1 ">
         <div>
             <div class="">free shipping on all u.s orders over $50</div>
@@ -34,20 +35,7 @@
                 <ul class="settings dropdown-menu dropdown-menu-end w-50">
                     <li>
                         <a class="dropdown-item" href="#">
-                            <c:if test="${not empty sessionScope.us}">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 me-3">
-                                        <div class="">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-                                                height="50" class="w-15 rounded-circle" />
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">${sessionScope.us.fullname}</span>
-                                        <small class="text-muted">Admin</small>
-                                    </div>
-                                </div>
-                            </c:if>
+
                         </a>
                     </li>
                     <li>
@@ -79,7 +67,6 @@
         </div>
         <!--THANH NAV-->
     </div>
-    <header class="">
         <nav class="navbar navbar-expand-lg" style="background-color: black;">
             <div class="container-fluid">
                 <!-- nút collaspe -->
@@ -115,11 +102,6 @@
                             </li>
                             <li class="nav-item distant">
                                 <a class="nav-link" href="#">Sale</a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right ">
-                            <li class="nav-item distant">
-                                <a class="nav-link" href="#">Login</a>
                             </li>
                         </ul>
                         <div class="d-flex distant">
