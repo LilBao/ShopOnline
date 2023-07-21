@@ -33,9 +33,9 @@ create table categories(
 	parentid int,
 	metakeyword nvarchar(250),
 	metadescription nvarchar(250),
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime
 )
 
@@ -45,22 +45,21 @@ create table products(
 	status int,
 	thumbnail nvarchar(50),
 	listImage xml,
-	price decimal(18,0),
-	promotionPrice decimal(18,0),
+	price float,
+	promotionPrice float,
 	vat bit,
-	quantity int,
 	warranty int,
 	hot datetime,
 	descriptions nvarchar(50),
 	detail ntext,
 	metakeyword nvarchar(250),
 	metadescription nvarchar(250),
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
 	cateID int,
-	foreign key(cateid) references categories(cateid),
+	foreign key(cateid) references categories(cateid) on delete cascade on update cascade,
 )
 
 create table productdetail(
@@ -68,7 +67,7 @@ create table productdetail(
 	quantity int,
 	size int,
 	productid int,
-	foreign key(productid) references products(productId),
+	foreign key(productid) references products(productId) on delete cascade on update cascade,
 )
 
 create table coupon(
@@ -79,9 +78,9 @@ create table coupon(
 	status bit,
 	quantity int,
 	dateEnd datetime,
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
 )
 
@@ -94,7 +93,7 @@ create table orders(
 	discount float,
 	--ma khach hang
 	username varchar(20),
-	foreign key(username) references accounts(username),
+	foreign key(username) references accounts(username) on delete NO ACTION on update NO ACTION,
 	name nvarchar(200),
 	email varchar(100),
 	address nvarchar(250),
@@ -102,17 +101,34 @@ create table orders(
 	subtotal float,
 	total float,
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
+	--payment online
+	content nvarchar(200),
+	bankcode varchar(10),
+	datesend datetime,
+	banktranno varchar(50),
+	cardtype varchar(7),
+	paydate datetime,
 )
 
 create table orderdetail(
-	id int primary key,
+	orderid int primary key,
 	productid int,
 	productname nvarchar(250),
 	price decimal(18,0),
 	quantity int,
-	foreign key(productid) references products(productId),
+	foreign key(productid) references products(productId) on delete NO ACTION on update NO ACTION,
+	foreign key(orderid) references orders(orderId) on delete cascade on update cascade,
+)
+
+create table Favorite(
+	id bigint IDENTITY(1,1)  primary key,
+	productId int not null,
+	username varchar(20) not null,
+	reviews nvarchar(250) 
+	foreign key (productId) references products(productId) on delete cascade on update cascade ,
+	foreign key (username) references accounts(username) on delete cascade on update cascade
 )
 
 ----news----
@@ -124,9 +140,9 @@ create table postcategory(
 	parentid int,
 	metakeyword nvarchar(250),
 	metadescription nvarchar(250),
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime
 )
 
@@ -140,23 +156,23 @@ create table post(
 	metakeyword nvarchar(250),
 	metadescription nvarchar(250),
 	tags nvarchar(200),
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
 	cateID int,
 	foreign key(cateid) references categories(cateid),
 )
 
 create table comment(
-	commentid int identity(1,1) primary key,
+	commentid bigint identity(1,1) primary key,
 	name nvarchar(250),
 	email varchar(50),
 	detail nvarchar(500),
 	status bit,
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
 	--khoa ngoai
 	postid int,
@@ -169,9 +185,9 @@ create table productcomment(
 	email varchar(50),
 	detail nvarchar(500),
 	status bit,
-	createBy int,
+	createBy varchar(20),
 	createDate datetime,
-	updateBy int,
+	updateBy varchar(20),
 	updateDate datetime,
 	--khoa ngoai
 	productid int,
@@ -222,6 +238,7 @@ create table feedback(
 	id int identity(1,1) primary key,
 	name nvarchar(200),
 	email nvarchar(50),
+	images varchar(50),
 	address nvarchar(250),
 	detail nvarchar(500)
 )
