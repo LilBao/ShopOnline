@@ -3,8 +3,9 @@ package com.shoponline.Entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="orders")
 public class Order {
+	@Id
 	private Integer orderid;
 	private Date orderdate;
 	private Boolean status;
@@ -29,7 +31,7 @@ public class Order {
 	private Float discount;
 	
 	@ManyToOne
-	@Column(name="username")
+	@JoinColumn(name="username")
 	Account account;
 	
 	private String name;

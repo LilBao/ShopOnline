@@ -1,6 +1,5 @@
 create database shoponline
 use shoponline
-
 create table accounts(
 	username varchar(20) primary key not null,
 	password varchar(40) not null,
@@ -113,7 +112,8 @@ create table orders(
 )
 
 create table orderdetail(
-	orderid int primary key,
+	id int primary key,
+	orderid int,
 	productid int,
 	productname nvarchar(250),
 	price decimal(18,0),
@@ -126,7 +126,6 @@ create table Favorite(
 	id bigint IDENTITY(1,1)  primary key,
 	productId int not null,
 	username varchar(20) not null,
-	reviews nvarchar(250) 
 	foreign key (productId) references products(productId) on delete cascade on update cascade ,
 	foreign key (username) references accounts(username) on delete cascade on update cascade
 )

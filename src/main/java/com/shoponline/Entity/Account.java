@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,6 +27,7 @@ public class Account {
 	private String password;
 	private String fullname;
 	private String email;
+	@Temporal(TemporalType.DATE)
 	private Date birthday;
 	private String avatar;
 	private String address;
@@ -33,4 +36,8 @@ public class Account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	List<Authority> authority;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	List<Order> order;
 }

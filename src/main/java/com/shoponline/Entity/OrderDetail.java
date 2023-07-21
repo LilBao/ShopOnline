@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "orderdetail", uniqueConstraints = {@UniqueConstraint (columnNames = {"orderid", "productid"})})
 public class OrderDetail {
 	@Id
+	private Integer id;
 	@ManyToOne
 	@JoinColumn(name="orderid")
 	Order order;

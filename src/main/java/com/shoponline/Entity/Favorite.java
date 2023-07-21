@@ -1,6 +1,9 @@
 package com.shoponline.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,6 +19,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="favorite", uniqueConstraints = {@UniqueConstraint (columnNames= {"username","productid"})})
 public class Favorite {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name="username")
@@ -24,5 +29,4 @@ public class Favorite {
 	@ManyToOne
 	@JoinColumn(name="productid")
 	Product product;
-	private String reviews;
 }
