@@ -2,7 +2,7 @@ create database shoponline
 use shoponline
 create table accounts(
 	username varchar(20) primary key not null,
-	password varchar(40) not null,
+	password varchar(70) not null,
 	fullname nvarchar(150) not null,
 	email varchar(100) not null,
 	birthday datetime not null,
@@ -10,6 +10,7 @@ create table accounts(
 	address nvarchar(200) not null,
 	phone varchar(20)
 )
+
 
 create table roles(
 	id varchar(10) primary key,

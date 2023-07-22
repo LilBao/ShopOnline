@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +20,11 @@ import com.shoponline.Repository.AccountDAO;
 @RestController
 public class AccountRestAPI {
 	@Autowired
-	AccountDAO dao;	
-		
+	AccountDAO dao;
+	
+	@Autowired
+	PasswordEncoder pe;
+			
 	@GetMapping("/api/auth/{username}")
 	public ResponseEntity<Account> get(@PathVariable("username") String username){
 		if(!dao.existsById(username)) {
@@ -37,7 +41,7 @@ public class AccountRestAPI {
 	@PostMapping("/api/auth")
 	public ResponseEntity<Account> post(@RequestBody Account account){
 		account.setAvatar("");
-//		account.setPassword(passwordEncoder.encode(account.getPassword()));
+		account.setPassword(pe.encode(account.getPassword()));
 		dao.save(account);
 		return ResponseEntity.ok(account);
 	}

@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="accounts")
-public class Account {
+public class Account{
 	@Id
 	private String username;
 	private String password;

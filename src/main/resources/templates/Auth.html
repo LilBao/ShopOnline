@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -35,12 +35,12 @@
 				<input class="form-control my-2" ng-model="signUp.password" type="password"  placeholder="Password"/>
 				<errors path="password" element="span" cssClass="text-danger" />
 				
-				<!-- <input class="form-control my-2" type="password" name="cfpassword"  placeholder="Confirm password"> -->
+				<input class="form-control my-2" type="password" name="cfpassword"  placeholder="Confirm password">
 				
 				<input class="form-control my-2" ng-model="signUp.fullname"  placeholder="Fullname"/>
 				<errors path="fullname" element="span" cssClass="text-danger" />
 				
-				<input class="form-control my-2" ng-model="signUp.email" placeholder="Email"/>
+				<input type="email" class="form-control my-2" ng-model="signUp.email" placeholder="Email"/>
 				<errors path="email" element="span" cssClass="text-danger" />
 
 				<input class="form-control my-2" type="date" ng-model="signUp.birthday">
@@ -55,7 +55,7 @@
 
 		<!-- 	 login -->
 		<div class="form-container sign-in-container">
-			<form action="${pageContext.request.contextPath }/login/signIn" class="text-left" method="post">
+			<form action="/auth-login" th:object="${account}" class="text-left" method="post">
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> <a
@@ -63,9 +63,9 @@
 						href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>or use your account</span>
-				<input class="form-control my-2" type="text"/>
+				<input th:field="*{username}" class="form-control my-2" type="text"/>
 				<errors path="username" element="span"  />
-				<input class="form-control my-2" type="password"/>
+				<input th:field="*{password}" class="form-control my-2" type="password"/>
 				
 				<div class="my-2 d-flex ">
 				<input class="w-0" type="checkbox"/>Remember me
