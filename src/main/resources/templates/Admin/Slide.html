@@ -1,4 +1,4 @@
-<div th:fragment="slide" class="col-sm-0 col-md-2 " style="float: left; height: 100%; min-height: 100vh">
+<div th:fragment="slide" class="col-sm-0 col-md-2 " style="float: left; height: 100%; min-height: 100vh ; flex: fixed;">
 		<div class="navbar navbar-expand-sm">
 			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
 				aria-labelledby="offcanvasExampleLabel">
@@ -10,6 +10,15 @@
 								<a class="list-group-item py-3 m-2" href="/PS24728_NguyenVanBao_ASM/Video">
 									<i class="mx-2 bi bi-file-earmark-play-fill"></i> Dash board
 								</a>
+							</li>
+							<li>
+								<a id="slide-toggle" class="list-group-item  py-3 m-2">
+									<i class="mx-2 bi bi-house-heart-fill"></i> Category
+								</a>
+								<ul id="slide" class="">
+									<li class="py-3 m-2"><a  href="#">Customers</a></li>
+									<li class="py-3 m-2"><a  href="#">Employee</a></li>
+								</ul>
 							</li>
 							<li>
 								<a id="slide-toggle" class="list-group-item  py-3 m-2">

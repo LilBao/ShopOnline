@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,13 +28,14 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cateid;
 	private String name;
-	private Boolean status;
+	private Boolean status = true;
 	private Integer sort;
 	private Integer parentid;
 	private String metakeyword;
-	private String metadesciption;
+	private String metadescription;
 	private String createby;
-	private Date createdate;
+	@Temporal(TemporalType.DATE)
+	private Date createdate = new Date();
 	private String updateby;
 	private Date updatedate;
 	
