@@ -1,4 +1,4 @@
-<div th:fragment="slide" class="col-sm-0 col-md-2 " style="float: left; height: 100%; min-height: 100vh ; flex: fixed;">
+<div th:fragment="slide" class="col-sm-0 col-md-2 float-start" style="height: 100%; min-height: 100vh ; flex: fixed;">
 		<div class="navbar navbar-expand-sm">
 			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
 				aria-labelledby="offcanvasExampleLabel">
@@ -12,21 +12,21 @@
 								</a>
 							</li>
 							<li>
-								<a id="slide-toggle" class="list-group-item  py-3 m-2">
+								<a href="#cate" data-bs-toggle="collapse"  class="list-group-item  py-3 m-2">
 									<i class="mx-2 bi bi-house-heart-fill"></i> Category
 								</a>
-								<ul id="slide" class="">
-									<li class="py-3 m-2"><a  href="#">Customers</a></li>
-									<li class="py-3 m-2"><a  href="#">Employee</a></li>
+								<ul id="cate" class="collapse slide">
+									<li class="slide py-3 m-2"><a  href="#">Customers</a></li>
+									<li class="slide py-3 m-2"><a  href="#">Employee</a></li>
 								</ul>
 							</li>
 							<li>
-								<a id="slide-toggle" class="list-group-item  py-3 m-2">
+								<a href="#acc" data-bs-toggle="collapse" class="slide-toggle list-group-item  py-3 m-2">
 									<i class="mx-2 bi bi-house-heart-fill"></i> Accounts
 								</a>
-								<ul id="slide" class="">
-									<li class="py-3 m-2"><a  href="#">Customers</a></li>
-									<li class="py-3 m-2"><a  href="#">Employee</a></li>
+								<ul id="acc" class="collapse slide">
+									<li class="py-3 m-2"><a  href="#">Account</a></li>
+									<li class="py-3 m-2"><a  href="#">Role</a></li>
 								</ul>
 							</li>
 							<li>

@@ -73,11 +73,10 @@
 	color: black !important;
 }
 
-#slide {
-	display: none;
+.slide {
 	list-style: none;
 }
 
-#slide a{
+.slide a{
 	text-decoration:none;
 }

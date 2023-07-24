@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,22 +28,24 @@ import lombok.NoArgsConstructor;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer productId;
+	private Integer productid;
 	private String name;
-	private Integer status;
+	private Integer status = 1;
 	private String thumbnail;
 	private String[] listImage;
 	private Float price;
 	private Float promotion;
-	private Boolean vat;
+	private Boolean vat = false;
 	private Integer warranty;
+	@Temporal(TemporalType.DATE)
 	private Date hot;
 	private String descriptions;
 	private String detail;
 	private String metakeyword;
 	private String metadesciption;
 	private String createby;
-	private Date createdate;
+	@Temporal(TemporalType.DATE)
+	private Date createdate = new Date();
 	private String updateby;
 	private Date updatedate;
 	
