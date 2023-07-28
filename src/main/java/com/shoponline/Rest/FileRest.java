@@ -25,8 +25,8 @@ public class FileRest {
 		return ResponseEntity.ok(fileService.list(folder));
 	}
 	
-	@GetMapping("/api/file/{folder}/{name}")
-	public byte[] download(@PathVariable("folder") String folder,@PathVariable("file") String file){
+	@GetMapping("/api/file/{folder}/{file}")
+	public byte[] read(@PathVariable("folder") String folder,@PathVariable("file") String file){
 		return fileService.read(folder,file);
 	}
 	
@@ -35,8 +35,9 @@ public class FileRest {
 		fileService.delete(folder,file);
 	}
 	
-	@PostMapping("api/file/{folder}")
-	public List<String> upload(@PathVariable("folder") String folder,@PathParam("files") MultipartFile[] file){
-		return fileService.upload(folder,file);
+	@PostMapping("/api/file/{folder}")
+	public String[] upload(@PathVariable("folder") String folder,@PathParam("files") MultipartFile[] files){
+		return fileService.upload(folder,files);
 	}
+	
 }

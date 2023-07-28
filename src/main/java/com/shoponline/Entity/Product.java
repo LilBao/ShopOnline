@@ -32,9 +32,9 @@ public class Product {
 	private String name;
 	private Integer status = 1;
 	private String thumbnail;
-	private String[] listImage;
+	private String[] listimage;
 	private Float price;
-	private Float promotion;
+	private Float promotionprice=0f;
 	private Boolean vat = false;
 	private Integer warranty;
 	@Temporal(TemporalType.DATE)
@@ -42,7 +42,7 @@ public class Product {
 	private String descriptions;
 	private String detail;
 	private String metakeyword;
-	private String metadesciption;
+	private String metadescription;
 	private String createby;
 	@Temporal(TemporalType.DATE)
 	private Date createdate = new Date();

@@ -7,6 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface FileService {
 	List<String> list(String folder);
 	byte[] read(String folder,String name);
-	List<String> upload(String folder, MultipartFile[] files);
+	String[] upload(String folder, MultipartFile[] files);
 	void delete(String folder, String name);
 }

@@ -52,15 +52,17 @@ public class FileServiceImpl implements FileService{
 	}
 
 	@Override
-	public List<String> upload(String folder, MultipartFile[] files) {
-		List<String> filesname = new ArrayList<>();
+	public String[] upload(String folder, MultipartFile[] files) {
+		String[] filesname = new String[files.length];
+		int i=0;
 		for (MultipartFile file : files) {
-			String name = System.currentTimeMillis()+file.getOriginalFilename();
+			String name = file.getOriginalFilename();
 			String filename = Integer.toHexString(name.hashCode())+name.substring(name.lastIndexOf("."));
 			Path path = this.getPath(folder, filename);
 			try {
 				file.transferTo(path);
-				filesname.add(filename);
+				filesname[i]=(filename);
+				i++;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -73,5 +75,6 @@ public class FileServiceImpl implements FileService{
 		Path path = this.getPath(folder, name);
 		path.toFile().delete();
 	}
+
 	
 }
