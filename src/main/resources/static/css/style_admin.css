@@ -78,7 +78,13 @@
 }
 
 .slide a{
+	color: black;
 	text-decoration:none;
+}
+
+.slide li:hover{
+	border-radius: 10px 10px 10px 10px;
+	background-color: #efefef;
 }
 
 .img-thumbnail{

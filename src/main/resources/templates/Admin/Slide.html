@@ -1,4 +1,4 @@
-<div th:fragment="slide" class="col-sm-0 col-md-2 float-start" style="height: 100%; min-height: 100vh ; position: sticky;">
+<div th:fragment="slide" class="sticky-top col-sm-0 col-md-2 float-start" style="height: 100%; min-height: 100vh ; ">
 		<div class="navbar navbar-expand-sm">
 			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
 				aria-labelledby="offcanvasExampleLabel">
@@ -12,36 +12,41 @@
 								</a>
 							</li>
 							<li>
-								<a href="#cate" data-bs-toggle="collapse"  class="list-group-item  py-3 m-2">
-									<i class="mx-2 bi bi-house-heart-fill"></i> Category
+								<a class="list-group-item py-3 m-2" th:href="@{|/admin-category|}">
+									<i class="mx-2 bi bi-file-earmark-play-fill"></i> Category
 								</a>
-								<ul id="cate" class="collapse slide">
-									<li class="slide py-3 m-2"><a  href="#">Customers</a></li>
-									<li class="slide py-3 m-2"><a  href="#">Employee</a></li>
-								</ul>
 							</li>
 							<li>
 								<a href="#acc" data-bs-toggle="collapse" class="slide-toggle list-group-item  py-3 m-2">
 									<i class="mx-2 bi bi-house-heart-fill"></i> Accounts
 								</a>
-								<ul id="acc" class="collapse slide">
-									<li class="py-3 m-2"><a  href="#">Account</a></li>
-									<li class="py-3 m-2"><a  href="#">Role</a></li>
+								<ul id="acc" class="px-0 collapse slide rounded shadow ">
+									<li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-account|}">Account</a></li>
+									<li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-role|}">Role</a></li>
 								</ul>
 							</li>
 							<li>
-								<a class="list-group-item py-3 m-2" href="/PS24728_NguyenVanBao_ASM/Video">
+								<a class="list-group-item py-3 m-2"  data-bs-toggle="collapse" href="#prd">
 									<i class="mx-2 bi bi-file-earmark-play-fill"></i> Products
 								</a>
+								<ul id="prd" class="px-0 collapse slide rounded shadow">
+									<li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-product|}">Product</a></li>
+									<li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-product-detail|}">Product details</a></li>
+								</ul>
 							</li>
 							<li>
-								<a class="list-group-item py-3 m-2" href="/PS24728_NguyenVanBao_ASM/User">
-									<i class="mx-2 bi bi-person-circle"></i> Orders
+								<a class="list-group-item py-3 m-2" th:href="@{|/admin-category|}">
+									<i class="mx-2 bi bi-file-earmark-play-fill"></i> Voucher
 								</a>
 							</li>
 							<li>
 								<a class="list-group-item py-3 m-2" href="/PS24728_NguyenVanBao_ASM/User">
-									<i class="mx-2 bi bi-person-circle"></i> Settings
+									<i class="mx-2 bi bi-person-circle"></i> Order
+								</a>
+							</li>
+							<li>
+								<a class="list-group-item py-3 m-2" href="/PS24728_NguyenVanBao_ASM/User">
+									<i class="mx-2 bi bi-person-circle"></i> Statistics
 								</a>
 							</li>
 						</ul>

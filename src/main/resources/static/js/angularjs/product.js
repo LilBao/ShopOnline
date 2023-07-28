@@ -37,6 +37,16 @@ app.controller('myCtrl', function ($scope, $http) {
         });
     }
 
+    $scope.delete = function (id) {
+        var url = host + "product/"+id;
+        var item = angular.copy($scope.form);
+        $http.delete(url).then(resp => {
+            $scope.reset();
+        }).catch(error => {
+            console.log("Errors", error);
+        });
+    }
+
     $scope.edit = function (id) {
         var url = host + "product/"+id;     
         $http.get(url).then(resp => {
