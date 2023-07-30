@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="productdetail")
-public class ProductDetail {
+public class ProductDetail implements Cloneable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -27,4 +27,16 @@ public class ProductDetail {
 	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
+	
+	public ProductDetail order(Integer quantity) {
+		ProductDetail prod = null;
+		try {
+			prod = (ProductDetail) this.clone();
+			prod.setQuantity(quantity);
+			this.quantity-=quantity;
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return prod;
+	}
 }

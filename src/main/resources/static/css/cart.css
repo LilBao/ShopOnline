@@ -1,66 +1,85 @@
-body{
+body {
     background-color: black;
-    color: white!important;
+    color: white !important;
 }
+
 /*  */
 
-.table td{
-    color: white!important;
+.table td {
+    color: white !important;
 }
 
-table img{
+table img {
     height: 100px;
     object-fit: cover;
 }
-.soluong{
-    margin: 0px!important;
+
+.soluong {
+    margin: 0px !important;
 }
-.soluong input{
+
+.soluong input {
     text-align: center;
     color: snow;
     background-color: transparent;
-    width:1rem!important;
+    width: 1rem !important;
 }
-.soluong input:focus{
+
+.soluong input:focus {
     color: white;
     background-color: transparent;
     border-color: white;
 }
-.soluong .btn{
+
+.soluong .btn {
     border-color: white;
     color: white;
     border-radius: 0px;
 }
-.soluong .btn:hover{
+
+.soluong .btn:hover {
     color: white;
 }
-#note{
+
+#note {
     background-color: transparent;
 }
 
-textarea{
-    color: white!important;
+textarea {
+    color: white !important;
 }
-textarea:focus{
+
+textarea:focus {
     border-color: white;
-    color: white!important;
+    color: white !important;
 }
+
 /*  */
-.card{
+.card {
     background-color: transparent;
     border: 1px solid white !important;
 }
-.card-header{
-    border-bottom:1px solid;
+
+.card-header {
+    border-bottom: 1px solid;
 }
-.card button{
+
+.card button {
     background-color: white;
     color: black;
     border: 1px solid;
 }
-.card button:hover{
+
+.card button:hover {
     border: 1px solid;
 }
-.card a{
+
+.card a {
     color: white;
+}
+
+.quantity {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
 }

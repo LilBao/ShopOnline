@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="products")
-public class Product {
+public class Product{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productid;
@@ -34,7 +34,7 @@ public class Product {
 	private String thumbnail;
 	private String[] listimage;
 	private Float price;
-	private Float promotionprice=0f;
+	private Integer promotionprice=0;
 	private Boolean vat = false;
 	private Integer warranty;
 	@Temporal(TemporalType.DATE)
@@ -64,4 +64,5 @@ public class Product {
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	List<ProductComment> productcomment;
+
 }

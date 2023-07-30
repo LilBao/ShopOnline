@@ -46,5 +46,11 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public List<ProductDetail> getByProduct(Integer id) {
 		return dao.getByProductId(id);
 	}
+
+	@Override
+	public ProductDetail getByProductSize(Integer id, Integer size) {
+		return dao.getByProductSize(id, size);
+	}
+	
 	
 }

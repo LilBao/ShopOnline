@@ -889,7 +889,7 @@ section
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-.product-item:hover::after
+.card:hover::after
 {
 	box-shadow: 0 25px 29px rgba(63, 78, 100, 0.15);
 	border: solid 2px rgba(235,235,235,1);
@@ -1022,7 +1022,7 @@ section
 	font-size: 12px;
 	font-weight: 600;
 }
-.product-item:hover .add_to_cart_button
+.card:hover .add_to_cart_button
 {
 	visibility: visible;
 	opacity: 1;
@@ -1047,7 +1047,7 @@ section
 	visibility: visible;
 	opacity: 1;
 }
-.product-item:hover .favorite
+.card:hover .favorite
 {
 	visibility: visible;
 	opacity: 1;

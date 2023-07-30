@@ -11,4 +11,5 @@ public interface ProductDetailService {
 	ProductDetail getOne(Integer id);
 	Boolean existsById(Integer id);
 	List<ProductDetail> getByProduct(Integer id);
+	ProductDetail getByProductSize(Integer id, Integer size);
 }

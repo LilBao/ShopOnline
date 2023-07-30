@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="../css/cart.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  <script src="../js/trangChu.js"></script>
+  <script src="../js/angularjs/cart.js"></script>
 </head>
 
-<body ng-app="myApp">
+<body ng-app="shoppingCart" ng-controller="cartCtrl">
 	<section th:replace="~{nav:: header}">
 	</section>
   <section>
@@ -27,7 +27,10 @@
       <div class="row">
         
         <div class="col-sm-12 col-md-7">
-        <h4 class="text-center">Giỏ mua hàng</h4>
+        <div class="d-flex justify-content-between">
+            <h4 class="text-center">Giỏ mua hàng</h4>
+            <button class="btn" ng-click="cart.clear()"><i class="bi bi-trash-fill"></i></button>
+        </div>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -37,27 +40,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr ng-repeat="item in cart.items">
                 <td>
-                  <img class="w-50" src="images/hinhmua.jpg" alt="">
+                  <img class="w-100" src="{{readFile(item.product.thumbnail)}}" alt=""> 
                 </td>
                 <td>
-                  <h3 class="m-0">ChromeHearts Ring</h3>
+                  <h5 class="m-0">{{item.product.name}}</h5>
                   <p class="m-0">
-                    <span>149,000</span>
-                    <del>(200,000)</del>
+                    <span>{{item.product.price-(item.product.price*(item.product.promotionprice/100)) | number:0}}</span>
+                    <del style="font-size: smaller;" ng-if="item.product.promotionprice > 0">{{item.product.price}}</del>
                   </p>
                   <p class="m-0">
-                    <span>29</span>
+                    <span ng-if="item.size !=null">Size: {{item.size}}</span>
                   </p>
-                  <div class="input-group mb-3  ">
-                     <input type="number"min=“1” max=“9” step=“1”>
+                  <div class="input-group mb-3 mt-3 d-flex justify-content-between">
+                     <input ng-change="cart.saveToLocalStorage()" ng-click="maxQuantity(item.id)" ng-model="item.quantity" class="quantity w-25" type="number" min='1' max='{{quantity}}' step=“1”>
+                     <span>{{(item.product.price - (item.product.price * (item.product.promotionprice/100)))*item.quantity | number:0}}</span>
                   </div>
                 </td>
                 <td class="remove">
-                  <a class="btn" href="">
+                  <button class="btn" ng-click="cart.remove(item.id)">
                     <i class="bi bi-x-lg"></i>
-                  </a>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -83,7 +87,7 @@
                   <h6>Tổng phụ</h6>
                 </div>
                 <div class="">
-                  <h6>1900000đ</h6>
+                  <h6>{{cart.getAmount() | number:0}}</h6>
                 </div>
               </div>
               <hr>
@@ -102,8 +106,8 @@
       </div>
     </div>
   </section>
-  <section th:replace="~{footer:: footer}">
-	</section>
+  <!-- <section th:replace="~{footer:: footer}">
+	</section> -->
 </body>
 
 </html>

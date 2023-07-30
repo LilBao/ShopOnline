@@ -40,6 +40,10 @@ public class ProductServiceImpl implements ProductService{
 	public Boolean existsById(Integer id) {
 		return dao.existsById(id);
 	}
-	
+
+	@Override
+	public List<Product> getByCondition(String cate) {
+		return dao.getByCondition(cate);
+	}
 	
 }

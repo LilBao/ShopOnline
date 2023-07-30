@@ -87,18 +87,18 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown distant">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" th:href="@{|/product-collections|}">
                                     Jewelry
                                 </a>
                                 <ul class="dropdown-content">
-                                    <li><a class="dropdown-item" href="#">Khuyên tai</a></li>
-                                    <li><a class="dropdown-item" href="#">Nhẫn</a></li>
-                                    <li><a class="dropdown-item" href="#">Dây chuyền</a></li>
-                                    <li><a class="dropdown-item" href="#">Vòng tay</a></li>
+                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Earrings|}">Khuyên tai</a></li>
+                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Ring|}">Nhẫn</a></li>
+                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Necklace|}">Dây chuyền</a></li>
+                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Bracelet|}">Vòng tay</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item distant">
-                                <a class="nav-link" href="#">Accessories</a>
+                                <a class="nav-link" th:href="@{|/product-collections/Accessories|}">Accessories</a>
                             </li>
                             <li class="nav-item distant">
                                 <a class="nav-link" href="#">Sale</a>
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="navbar-brand logo" href="#"><img class="w-100" src="images/logoChrome.png" alt=""></a>
+                <a class="navbar-brand logo" th:href="@{|/index|}"><img class="w-100" src="../images/logoChrome.png" alt=""></a>
                 <a href="" type="button" class="btn btn-primary buttonCss">
                     Bag <span class="badge bg-danger">4</span>
                 </a>
