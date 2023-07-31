@@ -47,4 +47,9 @@ public class CouponRest {
 	public void delete(@PathVariable("id") Integer id){
 			voucherSer.delete(id);
 	}
+	
+	@GetMapping("api/coupon-code/{code}")
+	public ResponseEntity<Coupon> getByCode(@PathVariable("code") String code){
+		return ResponseEntity.ok(voucherSer.getByCode(code));
+	}
 }

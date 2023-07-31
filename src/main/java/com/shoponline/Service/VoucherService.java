@@ -10,4 +10,5 @@ public interface VoucherService {
 	List<Coupon> getAll();
 	Coupon getOne(Integer id);
 	Boolean existsById(Integer id);
+	Coupon getByCode(String code);
 }

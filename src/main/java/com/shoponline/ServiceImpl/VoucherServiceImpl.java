@@ -39,5 +39,10 @@ public class VoucherServiceImpl implements VoucherService{
 	public Boolean existsById(Integer id) {
 		return voucherdao.existsById(id);
 	}
+
+	@Override
+	public Coupon getByCode(String code) {
+		return voucherdao.getCouponByCode(code);
+	}
 	
 }

@@ -113,7 +113,7 @@ create table orders(
 )
 
 create table orderdetail(
-	id int primary key,
+	id int identity(1,1) primary key,
 	orderid int,
 	productid int,
 	productname nvarchar(250),

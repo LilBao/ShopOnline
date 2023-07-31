@@ -2,6 +2,7 @@ package com.shoponline.Entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,11 +24,11 @@ import lombok.NoArgsConstructor;
 @Table(name="orders")
 public class Order {
 	@Id
-	private Integer orderid;
-	private Date orderdate;
-	private Boolean status;
-	private Boolean delivered;
-	private Date deliveredDate;
+	private Integer orderid=Math.abs(UUID.randomUUID().hashCode());
+	private Date orderdate = new Date();
+	private Boolean status =false;
+	private Boolean delivered = false;
+	private Date delivereddate;
 	private Float discount;
 	
 	@ManyToOne
@@ -40,7 +41,7 @@ public class Order {
 	private String phone;
 	private Float subtotal;
 	private Float total;
-	private Date createdate;
+	private Date createdate = new Date();
 	private String updateby;
 	private Date updatedate;
 	private String content;
