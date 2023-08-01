@@ -29,8 +29,8 @@ app.controller("cartCtrl", function ($scope, $http) {
         },
 
         getAmount() {
-            return this.items.map(item =>item.product.promotionprice > 0 ? item.quantity*(item.product.price - (item.product.price*item.product.promotionprice/100)) 
-                                : item.quantity * item.product.price).reduce((total, amount) => total += amount, 0);
+            return this.items.map(item => item.product.promotionprice > 0 ? item.quantity * (item.product.price - (item.product.price * item.product.promotionprice / 100))
+                : item.quantity * item.product.price).reduce((total, amount) => total += amount, 0);
         },
 
         saveToLocalStorage() {
@@ -59,20 +59,29 @@ app.controller("cartCtrl", function ($scope, $http) {
     }
     $scope.cart.loadFromLocalStorage();
 
-    $scope.Discount = function(){
+    $scope.Discount = function () {
         const code = $scope.voucher;
-        $http.get(host+"coupon-code/"+code).then(resp => {
-            console.log($scope.cart.getAmount());
-            if(resp.data.type === "percentage"){
-                var discount =$scope.cart.getAmount() - ($scope.cart.getAmount() * resp.data.value/100)
-                document.getElementById('total').innerText=discount;
-                document.getElementById('discount').innerText=($scope.cart.getAmount() * resp.data.value/100);
-                document.getElementById('useVoucher').setAttribute('hidden',true);
-            }else{
-                var discount =$scope.cart.getAmount() - resp.data.value;
-                document.getElementById('total').innerText=discount;
-                document.getElementById('discount').innerText=resp.data.value;
-                document.getElementById('useVoucher').setAttribute('hidden',true);
+        var today = new Date();
+        var formattedDate = today.toISOString().slice(0, 10);
+        $http.get(host + "coupon-code/" + code).then(resp => {
+            if(resp.data.status == false){
+                alert("Mã này đã hết hiệu lực");
+            }
+            else if (resp.data.dateend <= formattedDate) {
+                alert("Mã này đã hết hạn sử dụng");
+            } else if (resp.data.quantity <= 0) {
+                alert("Mã đã hết số lượng sử dụng");
+            }
+            else if (resp.data.type === "percentage") {
+                var discount = $scope.cart.getAmount() - ($scope.cart.getAmount() * resp.data.value / 100)
+                document.getElementById('total').innerText = discount;
+                document.getElementById('discount').innerText = ($scope.cart.getAmount() * resp.data.value / 100);
+                document.getElementById('useVoucher').setAttribute('hidden', true);
+            } else {
+                var discount = $scope.cart.getAmount() - resp.data.value;
+                document.getElementById('total').innerText = discount;
+                document.getElementById('discount').innerText = resp.data.value;
+                document.getElementById('useVoucher').setAttribute('hidden', true);
             }
         })
     };
@@ -82,9 +91,9 @@ app.controller("orderCtrl", function ($scope, $http) {
     $scope.listDistricts = [];
     $scope.listWards = [];
     $scope.infor = {};
-    $scope.items=[];
+    $scope.items = [];
     $scope.items = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-    $scope.orderdetail={};
+    $scope.orderdetail = {};
     $scope.Provinces = function () {
         $http.get("https://provinces.open-api.vn/api/p/").then(resp => {
             $scope.listProvinces = resp.data;
@@ -108,32 +117,53 @@ app.controller("orderCtrl", function ($scope, $http) {
     $scope.Provinces();
 
     $scope.payment = function () {
-        var TypePayment =document.getElementById('cod').checked;
+        var TypePayment = document.getElementById('cod').checked;
         const province = document.getElementById('province');
         const district = document.getElementById('district');
         const wards = document.getElementById('ward');
         $scope.infor.address = $scope.infor.address + ", " + wards.options[wards.selectedIndex].text + ", " + district.options[district.selectedIndex].text + ", " + province.options[province.selectedIndex].text;
-        $scope.infor.subtotal =Number(document.getElementById('subtotal').innerText);
-        $scope.infor.discount=Number(document.getElementById('discount').innerText);
+        $scope.infor.subtotal = Number(document.getElementById('subtotal').innerText);
+        $scope.infor.discount = Number(document.getElementById('discount').innerText);
         $scope.infor.total = Number(document.getElementById('total').innerText);
         if (TypePayment) {
-            $http.post(host+"order",$scope.infor).then(resp =>{
+            $http.post(host + "order", $scope.infor).then(resp => {
                 $scope.items.forEach(item => {
                     console.log(item)
-                    $scope.orderdetail.order=resp.data;
-                    $scope.orderdetail.product=item.product;
-                    $scope.orderdetail.productname=item.product.name;
-                    $scope.orderdetail.price=item.product.price;
-                    $scope.orderdetail.quantity=item.quantity;
-                    $http.post(host+"order-detail",$scope.orderdetail).then(resp =>{
+                    $scope.orderdetail.order = resp.data;
+                    $scope.orderdetail.product = item.product;
+                    $scope.orderdetail.productname = item.product.name;
+                    $scope.orderdetail.price = item.product.price;
+                    $scope.orderdetail.quantity = item.quantity;
+                    $http.post(host + "order-detail", $scope.orderdetail).then(resp => {
                         alert("thanh toán thành công");
+                        $scope.UpdateQuantity(item.id,item.quantity);
                     })
                 });
                 localStorage.removeItem('cart')
+                $scope.UpdateQuantityVoucher();
             })
-        }else{
+        } else {
             alert("Dang chuyển qua vnPay")
         }
+    }
+    $scope.test= function(){
+        console.log(document.getElementById('voucher').value)
+    }
+    $scope.UpdateQuantity = function (id,quantity) {
+        $http.get(host + "product-detail/" + id).then(resp => {
+            resp.data.quantity = resp.data.quantity - quantity;
+            $http.put(host + "product-detail" ,resp.data).then(resp => {
+
+            })
+        })
+    }
+    $scope.UpdateQuantityVoucher = function () {
+        const code =document.getElementById('voucher').value;
+        $http.get(host + "coupon-code/"+code).then(resp => {
+            resp.data.quantity =resp.data.quantity-1;
+            $http.put(host + "coupon" ,resp.data).then(resp => {
+            })
+        })
     }
 
 })

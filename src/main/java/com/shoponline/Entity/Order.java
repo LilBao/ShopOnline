@@ -26,7 +26,7 @@ public class Order {
 	@Id
 	private Integer orderid=Math.abs(UUID.randomUUID().hashCode());
 	private Date orderdate = new Date();
-	private Boolean status =false;
+	private Integer status =0;
 	private Boolean delivered = false;
 	private Date delivereddate;
 	private Float discount;

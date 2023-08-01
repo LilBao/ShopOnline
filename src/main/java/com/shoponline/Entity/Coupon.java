@@ -26,7 +26,7 @@ public class Coupon {
 	private String code;
 	private String type;
 	private Float value;
-	private Boolean status=false;
+	private Boolean status=true;
 	private Integer quantity=Integer.MAX_VALUE-1000;
 	@Temporal(TemporalType.DATE)
 	private Date dateend;
