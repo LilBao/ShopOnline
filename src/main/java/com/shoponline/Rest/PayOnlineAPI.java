@@ -35,12 +35,13 @@ public class PayOnlineAPI {
 	HttpServletResponse resp;
 	
 	@GetMapping("/api/payment")
-	public ModelAndView  payment(@RequestParam("amount") long amounts, 
-			@RequestParam("orderid") Integer orderid,@RequestParam("fullname") String name) throws UnsupportedEncodingException {
+	public Payment payment(@RequestParam("total") long total,@RequestParam("fullname") String name, @RequestParam("email") String email,
+								@RequestParam("phone") String phone, @RequestParam("address") String address,@RequestParam("code") String code,
+								@RequestParam("subtotal") Float subtotal, @RequestParam("discount") Float discount) throws UnsupportedEncodingException {
 		String vnp_Version = PayOnlineConfig.vnp_Version;
         String vnp_Command = PayOnlineConfig.vnp_Command;
 //        String orderType = req.getParameter("ordertype");
-        long amount = amounts*100;
+        long amount = total*100;
         
         String vnp_TxnRef = PayOnlineConfig.getRandomNumber(8);
         String vnp_IpAddr = PayOnlineConfig.getIpAddress(req);
@@ -57,7 +58,7 @@ public class PayOnlineAPI {
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", "other");
         vnp_Params.put("vnp_Locale", "vn");
-        vnp_Params.put("vnp_ReturnUrl", PayOnlineConfig.vnp_Returnurl+"?orderid="+orderid+"&name="+"abc");
+        vnp_Params.put("vnp_ReturnUrl", PayOnlineConfig.vnp_Returnurl+"?fullname="+name+"&phone="+phone+"&address="+address+"&email="+email+"&subtotal="+subtotal+"&discount="+discount+"&code="+code);
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
 
         Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
@@ -101,6 +102,6 @@ public class PayOnlineAPI {
         payment.setStatus("00");
         payment.setMessage("Successfully");
         payment.setURL(paymentUrl);
-        return new ModelAndView("redirect:"+payment.getURL());
+        return payment;
 	}
 }

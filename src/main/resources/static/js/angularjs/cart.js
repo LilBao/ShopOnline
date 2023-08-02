@@ -128,7 +128,6 @@ app.controller("orderCtrl", function ($scope, $http) {
         if (TypePayment) {
             $http.post(host + "order", $scope.infor).then(resp => {
                 $scope.items.forEach(item => {
-                    console.log(item)
                     $scope.orderdetail.order = resp.data;
                     $scope.orderdetail.product = item.product;
                     $scope.orderdetail.productname = item.product.name;
@@ -141,9 +140,15 @@ app.controller("orderCtrl", function ($scope, $http) {
                 });
                 localStorage.removeItem('cart')
                 $scope.UpdateQuantityVoucher();
+                window.location.href="";
             })
         } else {
-            alert("Dang chuyển qua vnPay")
+            var url = host + "payment?total="+$scope.infor.total+"&fullname="+$scope.infor.name+"&email="+$scope.infor.email+"&phone="
+                            +$scope.infor.phone+"&address="+$scope.infor.address+"&subtotal="+$scope.infor.subtotal+"&discount="
+                            +$scope.infor.discount+"&code="+document.getElementById('voucher').value;
+            $http.get(url).then(resp => {
+                window.location.href = resp.data.url;
+            })
         }
     }
     $scope.test= function(){
