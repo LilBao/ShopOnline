@@ -11,4 +11,6 @@ public interface ProductService {
 	Product getOne(Integer id);
 	Boolean existsById(Integer id);
 	List<Product> getByCondition(String cate);
+	Product getNew();
+	List<Product> get2Hot();
 }

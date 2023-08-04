@@ -13,4 +13,10 @@ import com.shoponline.Entity.Product;
 public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("Select o from Product o where category.name like :namecate ")
 	List<Product> getByCondition(@Param("namecate") String name);
+	
+	@Query(value ="Select top 1 * from products order by createdate DESC", nativeQuery = true)
+	Product findFirst();
+	
+	@Query(value ="select top 2 * from products order by hot DESC ", nativeQuery = true)
+	List<Product> get2Hot();
 }

@@ -133,6 +133,7 @@ app.controller("orderCtrl", function ($scope, $http) {
                     $scope.orderdetail.productname = item.product.name;
                     $scope.orderdetail.price = item.product.price;
                     $scope.orderdetail.quantity = item.quantity;
+                    $scope.orderdetail.size = item.size;
                     $http.post(host + "order-detail", $scope.orderdetail).then(resp => {
                         alert("thanh toán thành công");
                         $scope.UpdateQuantity(item.id,item.quantity);

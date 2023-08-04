@@ -3,22 +3,26 @@
                 {
                         "img": "bannerKhuyen.jpg",
                         "title": "KHUYÊN TAI",
-                        "btn": "Xem Thêm"
+                        "btn": "Xem Thêm",
+                        "href": "/product-collections/Earrings"
                 },
                 {
                         "img": "bannerNhan.jpg",
                         "title": "NHẪN",
-                        "btn": "Xem Thêm"
+                        "btn": "Xem Thêm",
+                        "href": "/product-collections/Ring"
                 },
                 {
                         "img": "bannerDayChuyen.jpg",
                         "title": "DÂY CHUYỀN",
-                        "btn": "Xem Thêm"
+                        "btn": "Xem Thêm",
+                        "href": "/product-collections/Necklace"
                 },
                 {
                         "img": "bannerVong.jpg",
                         "title": "VÒNG",
-                        "btn": "Xem Thêm"
+                        "btn": "Xem Thêm",
+                        "href": "/product-collections/Bracelet"
                 }
         ],
         "bannerjs": [
@@ -60,21 +64,6 @@
                         "img2": "hm3.jpg"
                 }
         ],
-        "desJs":[
-                {
-                        "title1": "Chrome Heart",
-                        "title2": "Chrome hearts Bubblegum Cross Ring with diamond",
-                        "price": "16.000.000",
-                        "size":"Cỡ",
-                        "btn":"Thêm vào giỏ hàng",
-                        "title3":"Chrome Heart - Sản phẩm bán chạy nhất",
-                        "title4":"Chế tác được ra mắt lần mang tên Chrome Heart Ring Cross Diamond - Mang biết tượng thánh giá.",
-                        "title5":"Sản phẩm mang cảm giác sang chảng và pha chút vintage",
-                        "img":"bestSeller.jpg",
-                        "end":"Xem chi tiết sản phẩm"
-                }
-        ],
-        "sizeJs":["Size 5","Size 6","Size 7","Size 8","Size 9"],
         "csjs":[
                 {
                         "icon":"bi bi-airplane-fill",

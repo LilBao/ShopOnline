@@ -199,6 +199,11 @@ header {
 	color: black;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	border:1px solid snow !important;
+	background-color:transparent!important;
+}
+
 .store {
 	font-size: small;
 	color: snow;

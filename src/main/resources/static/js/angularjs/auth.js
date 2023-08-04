@@ -9,7 +9,8 @@ app.controller('myCtrl',function($scope,$http){
         var item = angular.copy($scope.signUp)
         $http.post(url,item).then(resp => {
             $scope.signUp = resp.data;
-            console.log("Dang ky thanh cong")
+            alert("Dang ky thanh cong");
+            $scope.reset();
         }).catch(error => {
             console.log("Dang ky that bai");
         })
@@ -21,4 +22,8 @@ app.controller('myCtrl',function($scope,$http){
 
         })
     }
+    $scope.reset=function(){
+        $scope.signUp={};
+    }
+
 })

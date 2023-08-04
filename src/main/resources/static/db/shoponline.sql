@@ -123,6 +123,7 @@ create table orderdetail(
 	foreign key(orderid) references orders(orderId) on delete cascade on update cascade,
 )
 
+
 create table Favorite(
 	id bigint IDENTITY(1,1)  primary key,
 	productId int not null,

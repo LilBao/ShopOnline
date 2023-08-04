@@ -86,7 +86,38 @@
 			</div>
 		</div>
 	</section>
-
+	<section class="container">
+		<div class="container" ng-controller="imgSpCtrl">
+			<div class="row">
+				<div id="demo" class="carousel slide" data-bs-ride="carousel">
+					<!-- The slideshow/carousel -->
+					<a href="">
+						<div class="carousel-inner">
+							<div class="carousel-item {{x.active}}" ng-repeat="x in imgSp">
+								<div class="row">
+									<div class="col-2">
+										<img class="w-100 px-0 pb-3" src="images/{{x.img1}}" alt="">
+									</div>
+									<div class="col-6">
+										<img class="w-100" src="images/{{x.img2}}" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					<!-- Left and right controls/icons -->
+					<button class="carousel-control-prev" type="button" data-bs-target="#demo"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#demo"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- Footer -->
 	<section ng-app="myApp"  th:insert="~{footer:: footer}">
 	</section>

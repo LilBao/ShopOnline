@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoponline.Entity.Order;
+import com.shoponline.Service.OrderDetailService;
 import com.shoponline.Service.OrderService;
 
 @Controller
 public class PaymentReturnController {
 	@Autowired
 	OrderService orderSer;
+	
+	@Autowired
+	OrderDetailService orderDetailSer;
 	
 	@GetMapping("payment-online")
 	public String view(Model model,@RequestParam("fullname") String fullname,@RequestParam("email") String email,
@@ -51,4 +55,12 @@ public class PaymentReturnController {
         }
         return "paymentsuccess";
 	}
+	
+	@GetMapping("invoice")
+	public String viewInvoice(Model model,@RequestParam("order") Integer id) {
+		Order order = orderSer.getOne(id);
+		model.addAttribute("order",order);
+		return "invoice";
+	}
+	
 }

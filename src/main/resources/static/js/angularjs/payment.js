@@ -19,6 +19,7 @@ app.controller("myCtrl", function ($scope, $http) {
             $scope.orderdetail.productname = item.product.name;
             $scope.orderdetail.price = item.product.price;
             $scope.orderdetail.quantity = item.quantity;
+            $scope.orderdetail.size = item.size;
             $http.post(host + "order-detail", $scope.orderdetail).then(resp => {
                 $scope.UpdateQuantity(item.id, item.quantity);
             })

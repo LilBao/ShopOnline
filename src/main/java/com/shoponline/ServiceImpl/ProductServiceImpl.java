@@ -45,5 +45,15 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getByCondition(String cate) {
 		return dao.getByCondition(cate);
 	}
+
+	@Override
+	public Product getNew() {
+		return dao.findFirst();
+	}
+
+	@Override
+	public List<Product> get2Hot() {
+		return dao.get2Hot();
+	}
 	
 }

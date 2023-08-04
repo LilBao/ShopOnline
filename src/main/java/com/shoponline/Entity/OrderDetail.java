@@ -33,4 +33,5 @@ public class OrderDetail {
 	private String productname;
 	private Float price;
 	private Integer quantity;
+	private Integer size;
 }

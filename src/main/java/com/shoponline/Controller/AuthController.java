@@ -1,36 +1,40 @@
 package com.shoponline.Controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoponline.Entity.Account;
 import com.shoponline.Repository.AccountDAO;
+import com.shoponline.Service.AccountService;
 
 @Controller
 public class AuthController {
 	@Autowired
-	AccountDAO accountDao;
+	AccountService accountSer;	
 	
-	@Autowired
-	PasswordEncoder pe;
-	
-	@GetMapping("auth")
-	public String view(@ModelAttribute("account") Account account) {
+	@RequestMapping("/auth")
+	public String viewlogin(Model model,@RequestParam("error") Optional<String> error) {
+		model.addAttribute("message", error.orElse(""));
 		return "Auth";
 	}
 	
-	@PostMapping("auth-login")
-	public String login(@ModelAttribute("account") Account account) {
-		Account acc = accountDao.findById(account.getUsername()).get();
-		if(pe.matches(account.getPassword(), acc.getPassword())) {
-			return "redirect:/index";
-		}else {
-			return "redirect:/auth";
-		}
-		
+	@GetMapping("/auth/login/error")
+	public String error(Model model){
+		model.addAttribute("message", "");
+		return "redirect:/auth?error=Check your username or password!";
+	}
+
+	@RequestMapping("/auth/access/denied")
+	public String denied(Model model){
+		return "redirect:/auth?error=Bạn không có quyền truy xuất!";
 	}
 }
