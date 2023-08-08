@@ -1,5 +1,7 @@
 package com.shoponline.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="authorities", uniqueConstraints = {@UniqueConstraint (columnNames={"usernameid","roleid"})})
-public class Authority {
+public class Authority implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

@@ -13,4 +13,7 @@ public interface ProductService {
 	List<Product> getByCondition(String cate);
 	Product getNew();
 	List<Product> get2Hot();
+	List<Product> getAllNotNull();
+	List<Product> getHotList(Integer productid);
+	List<Product> getSaleList(Integer productid);
 }

@@ -21,19 +21,6 @@
 <body>
 	<section th:replace="~{nav:: header}"></section>
 
-	<!-- Breadcrumb Start -->
-	<div class="breadcrumb-wrap">
-		<div class="container-fluid">
-			<ul class="breadcrumb">
-				<li class="breadcrumb-item"><a href="${pageContext.request.contextPath }/home">Home</a></li>
-				<li class="breadcrumb-item"><a href="${pageContext.request.contextPath }/my-account">Order</a></li>
-				<li class="breadcrumb-item active">Order Detail</li>
-			</ul>
-		</div>
-	</div>
-	<!-- Breadcrumb End -->
-
-	<!-- Product Detail Start -->
 	<div class="container mt-5 mb-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-8">
@@ -158,16 +145,12 @@
 					</div>
 					<div class="d-flex justify-content-between footer p-3">
 						<span>Need Help? visit our <a href="#"> help center</a></span>
-						<div>
-						<c:if test="${not empty sessionScope.user }">
-							<c:if test="${ord.status==0}">
+						<div th:if="${auth} !=null and ${order.status}==0 and ${auth}==${order.account.username}">
 								<a
-									href="${pageContext.request.contextPath}/cancellated?ordid=${ord.id}"
+									th:href="@{|/cancel-invoice/${order.orderid}|}"
 									class="them btn"> <i class="bi bi-x"></i>
 									Cancellation order
-								</a>
-							</c:if>
-						</c:if>			
+								</a>		
 						</div>
 					</div>
 				</div>

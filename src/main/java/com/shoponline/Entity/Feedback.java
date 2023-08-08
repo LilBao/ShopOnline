@@ -18,20 +18,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="productcomment")
-public class ProductComment {
+@Table(name="feedback")
+public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer commentid;
 	private String name;
 	private String email;
 	private String detail;
-	private Boolean status;
-	private String createby;
-	private Date createdate;
-	private String updateby;
+	private String[] images;
+	private Integer rate;
+	private Boolean status = true;
+	private Date createdate = new Date();
 	private Date updatedate;
 	@ManyToOne
 	@JoinColumn(name="productid")
 	Product product;
+	
+	@ManyToOne
+	@JoinColumn(name="createby")
+	Account account;
+	
 }

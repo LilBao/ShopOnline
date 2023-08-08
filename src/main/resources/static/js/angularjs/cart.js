@@ -1,6 +1,7 @@
 var host = "http://localhost:8080/api/";
 var app = angular.module('shoppingCart', []);
 app.controller("cartCtrl", function ($scope, $http) {
+    
     $scope.quantity = 0;
     $scope.cart = {
         items: [],
@@ -58,7 +59,6 @@ app.controller("cartCtrl", function ($scope, $http) {
         })
     }
     $scope.cart.loadFromLocalStorage();
-
     $scope.Discount = function () {
         const code = $scope.voucher;
         var today = new Date();
@@ -141,7 +141,7 @@ app.controller("orderCtrl", function ($scope, $http) {
                 });
                 localStorage.removeItem('cart')
                 $scope.UpdateQuantityVoucher();
-                window.location.href="";
+                window.location.href="/invoice?order"+resp.data.orderid;
             })
         } else {
             var url = host + "payment?total="+$scope.infor.total+"&fullname="+$scope.infor.name+"&email="+$scope.infor.email+"&phone="
@@ -172,4 +172,10 @@ app.controller("orderCtrl", function ($scope, $http) {
         })
     }
 
+})
+app.controller('footerCtrl', function ($scope, $http) {
+    $scope.ft = []
+    $http.get('../js/trangChu.json').then(function (response) {
+      $scope.ft = response.data.ftjs;
+    })
 })

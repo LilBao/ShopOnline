@@ -15,7 +15,7 @@ import com.shoponline.Entity.Account;
 @Service
 public class UserDetailImpl implements UserDetails {
 	Account account;
-
+	
 	public UserDetailImpl(Account account) {
 		this.account = account;
 	}
@@ -28,8 +28,7 @@ public class UserDetailImpl implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		PasswordEncoder pe = new BCryptPasswordEncoder();
-		return pe.encode(account.getPassword());
+		return account.getPassword();
 	}
 
 	@Override

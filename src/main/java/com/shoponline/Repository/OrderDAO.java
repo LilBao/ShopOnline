@@ -13,4 +13,8 @@ import com.shoponline.Entity.Order;
 public interface OrderDAO extends JpaRepository<Order, Integer>{
 	@Query("select o from Order o where o.status = :status")
 	List<Order> getOrderByStatus(@Param("status") Integer status);
+	
+	@Query("select o from Order o where account.username = :username")
+	List<Order> getOrderByUsername(@Param("username") String username);
+
 }

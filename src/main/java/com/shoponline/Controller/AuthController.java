@@ -35,6 +35,6 @@ public class AuthController {
 
 	@RequestMapping("/auth/access/denied")
 	public String denied(Model model){
-		return "redirect:/auth?error=Bạn không có quyền truy xuất!";
+		return "redirect:/auth?error=Your are not permission!";
 	}
 }

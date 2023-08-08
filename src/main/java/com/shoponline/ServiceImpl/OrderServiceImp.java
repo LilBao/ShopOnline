@@ -39,5 +39,15 @@ public class OrderServiceImp implements OrderService{
 	public Boolean existsById(Integer id) {
 		return dao.existsById(id);
 	}
+
+	@Override
+	public List<Order> getOrderByUsername(String username) {
+		return dao.getOrderByUsername(username);
+	}
+
+	@Override
+	public List<Order> getOrderByStatus(Integer status) {
+		return dao.getOrderByStatus(status);
+	}
 	
 }

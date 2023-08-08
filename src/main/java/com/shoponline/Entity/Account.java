@@ -1,5 +1,6 @@
 package com.shoponline.Entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="accounts")
 @Component
-public class Account{
+public class Account implements Serializable{
 	@Id
 	private String username;
 	private String password;
@@ -44,4 +45,8 @@ public class Account{
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	List<Order> order;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	List<Feedback> feedback;
 }

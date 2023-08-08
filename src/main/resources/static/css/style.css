@@ -5,6 +5,7 @@ body {
 section {
 	margin: 100px;
 }
+
 /* Nav */
 header {
 	padding: 10px;
@@ -73,7 +74,8 @@ header {
 }
 
 .buttonCss:hover {
-	border-color: rgb(240, 240, 230);;
+	border-color: rgb(240, 240, 230);
+	;
 	background-color: transparent;
 	border-color: none;
 }
@@ -93,6 +95,7 @@ header {
 #carouselExampleIndicators {
 	z-index: 0;
 }
+
 /* End Slide Banner */
 /* DSSP*/
 .card {
@@ -154,6 +157,22 @@ header {
 	color: black;
 	border-color: black;
 }
+
+.inputCss::placeholder {
+	color: snow !important;
+}
+
+.inputCss {
+	color: snow;
+	background-color: transparent;
+}
+
+.inputCss:focus {
+	background-color: transparent;
+	color: snow;
+	border-color: snow;
+}
+
 /* Best Seller */
 .bestSeller {
 	color: snow;
@@ -199,15 +218,17 @@ header {
 	color: black;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-	border:1px solid snow !important;
-	background-color:transparent!important;
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+	border: 1px solid snow !important;
+	background-color: transparent !important;
 }
 
 .store {
 	font-size: small;
 	color: snow;
 }
+
 /* Banner */
 
 /* End DSSP */
@@ -267,13 +288,14 @@ header {
 .hoverIns:hover {
 	z-index: 2;
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8),
-		rgba(0, 0, 0, 0.8));
+			rgba(0, 0, 0, 0.8));
 	opacity: 0.5;
 }
 
 .hoverIns:hover .logoIns {
 	z-index: 3;
 }
+
 /* FeedBack */
 .dflex {
 	display: flex;
@@ -311,6 +333,7 @@ header {
 	transform: scale(1.1);
 	transition: all 0.4s ease-out;
 }
+
 /* Icon chính sách */
 .iconCs {
 	font-size: xx-large;
@@ -320,6 +343,7 @@ header {
 .cs {
 	color: snow;
 }
+
 /* FOOTER */
 footer {
 	background-color: black;
@@ -338,7 +362,7 @@ footer a:hover {
 }
 
 /* MODAL */
-.search { 
+.search {
 	-bs-modal-width: 100%;
 }
 
@@ -404,30 +428,124 @@ footer a:hover {
 	background-color: snow;
 }
 
-.my-radio{
+.my-radio {
 	position: relative;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    margin-bottom: 5px;
-    margin-right: 2px;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	margin-bottom: 5px;
+	margin-right: 2px;
 }
-.my-radio input{
+
+.my-radio input {
 	position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
+	left: 0;
+	top: 0;
+	z-index: -1;
 }
-.my-radio label{
+
+.my-radio label {
 	color: black !important;
-	background: #fff;			
-    border: 1px solid #ccc;
-    padding: 5px 8px;
-    text-transform: lowercase;
-    min-width: 40px;
-    text-align: center;
-    cursor: pointer;
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 5px 8px;
+	text-transform: lowercase;
+	min-width: 40px;
+	text-align: center;
+	cursor: pointer;
 }
-.my-radio input:checked~label{
+
+.my-radio input:checked~label {
 	border: 1px solid rgb(255, 0, 0) !important;
+}
+
+.avatar {
+	width: 50px;
+	height: 50px;
+}
+
+/**********Rate********/
+.rating {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 0.3rem;
+	--stroke: #666;
+	--fill: #ffc73a;
+  }
+  
+  .rating input {
+	appearance: unset;
+  }
+  
+  .rating label {
+	cursor: pointer;
+  }
+  
+  .rating svg {
+	width: 3rem;
+	height: 3rem;
+	overflow: visible;
+	fill: transparent;
+	stroke: var(--stroke);
+	stroke-linejoin: bevel;
+	stroke-dasharray: 12;
+	animation: idle 4s linear infinite;
+	transition: stroke 0.2s, fill 0.5s;
+  }
+  
+  @keyframes idle {
+	from {
+	  stroke-dashoffset: 24;
+	}
+  }
+  
+  .rating label:hover svg {
+	stroke: var(--fill);
+  }
+  
+  .rating input:checked ~ label svg {
+	transition: 0s;
+	animation: idle 4s linear infinite, yippee 0.75s backwards;
+	fill: var(--fill);
+	stroke: var(--fill);
+	stroke-opacity: 0;
+	stroke-dasharray: 0;
+	stroke-linejoin: miter;
+	stroke-width: 8px;
+  }
+  
+  @keyframes yippee {
+	0% {
+	  transform: scale(1);
+	  fill: var(--fill);
+	  fill-opacity: 0;
+	  stroke-opacity: 1;
+	  stroke: var(--stroke);
+	  stroke-dasharray: 10;
+	  stroke-width: 1px;
+	  stroke-linejoin: bevel;
+	}
+  
+	30% {
+	  transform: scale(0);
+	  fill: var(--fill);
+	  fill-opacity: 0;
+	  stroke-opacity: 1;
+	  stroke: var(--stroke);
+	  stroke-dasharray: 10;
+	  stroke-width: 1px;
+	  stroke-linejoin: bevel;
+	}
+  
+	30.1% {
+	  stroke: var(--fill);
+	  stroke-dasharray: 0;
+	  stroke-linejoin: miter;
+	  stroke-width: 8px;
+	}
+  
+	60% {
+	  transform: scale(1.2);
+	  fill: var(--fill);
+	}
 }

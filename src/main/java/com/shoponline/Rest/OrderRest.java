@@ -40,7 +40,7 @@ public class OrderRest {
 	
 	@PostMapping("api/order")
 	public ResponseEntity<Order> create(Authentication auth,@RequestBody Order order){
-		if(auth.isAuthenticated()) {
+		if(auth!=null) {
 			order.setAccount(accSer.getOne(auth.getName()));
 		}
 		return ResponseEntity.ok(orderSer.save(order));
@@ -48,7 +48,7 @@ public class OrderRest {
 	
 	@PutMapping("api/order")
 	public ResponseEntity<Order> update(Authentication auth,@RequestBody Order order){
-		if(auth.isAuthenticated()) {
+		if(auth!=null) {
 			order.setAccount(accSer.getOne(auth.getName()));
 		}
 		return ResponseEntity.ok(orderSer.save(order));

@@ -180,20 +180,23 @@ create table comment(
 	foreign key(postid) references post(postId),
 )
 
-create table productcomment(
+create table feedback(
 	commentid int identity(1,1) primary key,
 	name nvarchar(250),
 	email varchar(50),
 	detail nvarchar(500),
 	status bit,
+	images varchar(100),
+	rate int,
 	createBy varchar(20),
 	createDate datetime,
-	updateBy varchar(20),
 	updateDate datetime,
 	--khoa ngoai
 	productid int,
-	foreign key(productid) references products(productId),
+	foreign key(createBy) references accounts(username) on delete cascade on update cascade,
+	foreign key(productid) references products(productId) on delete cascade on update cascade,
 )
+
 
 create table tag(
 	id nvarchar(50) primary key,
@@ -235,11 +238,3 @@ create table contact(
 )
 
 ---feedback----
-create table feedback(
-	id int identity(1,1) primary key,
-	name nvarchar(200),
-	email nvarchar(50),
-	images varchar(50),
-	address nvarchar(250),
-	detail nvarchar(500)
-)

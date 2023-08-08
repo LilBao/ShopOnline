@@ -63,6 +63,6 @@ public class Product{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")
-	List<ProductComment> productcomment;
+	List<Feedback> productcomment;
 
 }

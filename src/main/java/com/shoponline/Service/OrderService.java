@@ -10,4 +10,6 @@ public interface OrderService {
 	List<Order> getAll();
 	Order getOne(Integer id);
 	Boolean existsById(Integer id);
+	List<Order> getOrderByUsername(String username);
+	List<Order> getOrderByStatus(Integer status);
 }

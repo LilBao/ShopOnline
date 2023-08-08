@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/categories_styles.css">
 	<link rel="stylesheet" type="text/css" href="../css/categories_responsive.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="../css/style.css">
 	<script src="../js/trangChu.js"></script>
 </head>
@@ -170,7 +171,7 @@
 														<img class="w-100" th:src="@{|/api/file/images/${item.thumbnail}|}" alt="">
 													</a>
 												</div>
-												<div onclick="alert('thich')" class="favorite favorite_left"></div>
+												<div th:onclick="addWishList([[${auth}]],[[${item.productid}]])" class="favorite favorite_left"></div>
 												<div th:if="${item.promotionprice} > 0"
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-[[${item.promotionprice}]]%</span></div>
@@ -254,7 +255,7 @@
 		</section>
 
 	</div>
-
+	<script src="../js/custom/ajax.js"></script>
 	<script src="../js/jquery-3.2.1.min.js"></script>
 	<script src="../plugins/Isotope/isotope.pkgd.min.js"></script>
 	<script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>

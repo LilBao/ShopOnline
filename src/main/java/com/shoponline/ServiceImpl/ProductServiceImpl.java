@@ -55,5 +55,20 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> get2Hot() {
 		return dao.get2Hot();
 	}
+
+	@Override
+	public List<Product> getAllNotNull() {
+		return dao.findDistinctByProductdetailNotNull();
+	}
+
+	@Override
+	public List<Product> getHotList(Integer productid) {
+		return dao.getAllHot(productid);
+	}
+
+	@Override
+	public List<Product> getSaleList(Integer productid) {
+		return dao.getSale(productid);
+	}
 	
 }

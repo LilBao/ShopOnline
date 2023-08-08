@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 import com.shoponline.ServiceImpl.UserService;
 
@@ -38,8 +39,8 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().cors().disable();
 		
 		// Phân quyền sử dụng
-		http.authorizeRequests().antMatchers("/index").hasRole("DIR")
-			.anyRequest().permitAll();
+		http.authorizeRequests().antMatchers("/settings").permitAll()
+							.anyRequest().permitAll();
 		
 		// Giao diện đăng nhập
 		http.formLogin()
@@ -55,8 +56,9 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		// Đăng xuất
 		http.logout()
 			.logoutUrl("/auth/logoff") 
-			.logoutSuccessUrl("/auth/logoff/success")
-			;	
+			.logoutSuccessUrl("/index")
+			.addLogoutHandler(new SecurityContextLogoutHandler())
+			.clearAuthentication(true);;	
 		
 		
 		// Điều khiển lỗi truy cập không đúng vai trò

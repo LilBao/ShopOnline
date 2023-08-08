@@ -17,4 +17,28 @@ $(document).ready(function () {
             }
         })
     }
+
+    window.addWishList = function (auth, idPrd) {
+        if(auth==null){
+            window.location.href="/auth";
+        }
+        $.ajax({
+            url: '/api/addWishlist?auth=' + auth + '&idProduct=' + idPrd,
+            type: 'get',
+            success: function (data) {
+                alert("Add wishlish successful");
+            }
+        })
+    }
+
+    window.unLike = function (id) {
+        $.ajax({
+            url: '/api/wishlist/'+ id,
+            type: 'delete',
+            success: function (data) {
+                alert("Unlike successful");
+                $('#favor').html($(data).find('#favor').children());
+            }
+        })
+    }
 })

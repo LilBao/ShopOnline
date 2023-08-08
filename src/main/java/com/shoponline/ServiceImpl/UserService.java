@@ -22,9 +22,9 @@ import com.shoponline.Service.AccountService;
 public class UserService implements UserDetailsService {
 	@Autowired
 	AccountService accSer;
-
+	
 	@Autowired
-	HttpServletRequest req;
+	HttpSession session;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {	
@@ -32,14 +32,13 @@ public class UserService implements UserDetailsService {
 			PasswordEncoder pe = new BCryptPasswordEncoder();
 			Account account = accSer.getOne(username);
 			// Tạo UserDetails từ Account
+			session.setAttribute("avatar", account.getAvatar());
 			return new UserDetailImpl(account);
 		} catch (Exception e) {
 			throw new UsernameNotFoundException(username + "not found");
 		}
 	}
-	
-	@Autowired
-	HttpSession session;
+
 	
 	public void setToken(String username, String password) {
 		byte[] auth = (username + ":" + password).getBytes();

@@ -1,6 +1,7 @@
 package com.shoponline.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +15,20 @@ public class ProductCollectionController {
 	ProductService productSer;
 	
 	@GetMapping("product-collections")
-	public String view(Model model) {
-		model.addAttribute("listProduct",productSer.getAll());
+	public String view(Model model,Authentication auth) {
+		if(auth!=null) {
+			model.addAttribute("auth",auth.getName());
+			}
+		model.addAttribute("listProduct",productSer.getAllNotNull());
 		return "categories";
 	}
 	
 	@GetMapping("/product-collections/{cate}")
-	public String view2(Model model,@PathVariable("cate") String cate) {
+	public String view2(Model model,@PathVariable("cate") String cate,Authentication auth) {
+		if(auth!=null) {
+			model.addAttribute("auth",auth.getName());
+		}
 		model.addAttribute("listProduct",productSer.getByCondition(cate));
-		//model.addAttribute("listProduct",productSer.getAll());
 		return "categories";
 	}
 }

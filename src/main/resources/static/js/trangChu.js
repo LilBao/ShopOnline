@@ -14,72 +14,78 @@ myApp.controller('bannerCtrl', function ($scope, $http) {
   })
 })
 // bestseller
-myApp.controller('imgSpCtrl', function ($scope,$http) {
+myApp.controller('imgSpCtrl', function ($scope, $http) {
   $scope.imgSp = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.imgSp=response.data.imgSpJs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.imgSp = response.data.imgSpJs;
   })
 })
 
-myApp.controller('desCtrl', function ($scope,$http) {
+myApp.controller('desCtrl', function ($scope, $http) {
   $scope.des = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.des=response.data.desJs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.des = response.data.desJs;
   })
 })
 
-myApp.controller('sizeCtrl', function ($scope,$http) {
+myApp.controller('sizeCtrl', function ($scope, $http) {
   $scope.size = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.size=response.data.sizeJs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.size = response.data.sizeJs;
   })
 })
 
 // feedback
-myApp.controller('fbCtrl', function ($scope,$http) {
+myApp.controller('fbCtrl', function ($scope, $http) {
   $scope.fb = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.fb=response.data.fbjs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.fb = response.data.fbjs;
   })
 })
 // ins toast
-myApp.controller('insCtrl', function ($scope,$http) {
+myApp.controller('insCtrl', function ($scope, $http) {
   $scope.ins = [];
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.ins=response.data.insjs
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.ins = response.data.insjs
   })
 })
 // SPNB
-myApp.controller('spnbCtrl', function ($scope,$http) {
+myApp.controller('spnbCtrl', function ($scope, $http) {
   $scope.spnb = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.spnb=response.data.spnbjs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.spnb = response.data.spnbjs;
   })
 })
 // Chính sách
-myApp.controller('csCtrl', function ($scope,$http) {
+myApp.controller('csCtrl', function ($scope, $http) {
   $scope.cs = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.cs=response.data.csjs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.cs = response.data.csjs;
   })
 })
 // Footer
-myApp.controller('footerCtrl', function ($scope,$http) {
+myApp.controller('footerCtrl', function ($scope, $http) {
   $scope.ft = []
-  $http.get('js/trangChu.json').then(function(response){
-    $scope.ft=response.data.ftjs;
+  $http.get('js/trangChu.json').then(function (response) {
+    $scope.ft = response.data.ftjs;
   })
 })
 
-myApp.controller('formCtrl', function($scope) {
-    $scope.master = {user:"vanbao", pass:"123"};
-    $scope.submit = function() {
-        if($scope.account===$scope.master){
-          alert('Đăng nhập thành công')
-        }else{
-          alert('Kiểm tra lại tài khoản')    
-        }
-    };
-  
+myApp.controller('formCtrl', function ($scope) {
+  $scope.master = { user: "vanbao", pass: "123" };
+  $scope.submit = function () {
+    if ($scope.account === $scope.master) {
+      alert('Đăng nhập thành công')
+    } else {
+      alert('Kiểm tra lại tài khoản')
+    }
+  };
 });
+var json = localStorage.getItem('cart');
+var items = json ? JSON.parse(json) : [];
+var getCount = items.map(item => item.quantity).reduce((total, quantity) => total += quantity, 0);
+setTimeout(function() {
+  document.getElementById('cartqty').textContent = getCount;
+  $scope.$apply();
+}, 0);
 

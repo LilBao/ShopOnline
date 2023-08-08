@@ -54,7 +54,7 @@
                     <span ng-if="item.size !=null">Size: {{item.size}}</span>
                   </p>
                   <div class="input-group mb-3 mt-3 d-flex justify-content-between">
-                     <input ng-change="cart.saveToLocalStorage()" ng-click="maxQuantity(item.id)" ng-model="item.quantity" class="quantity w-25" type="number" min='1' max='{{quantity}}' step=“1”>
+                     <input ng-change="cart.saveToLocalStorage()" ng-init="maxQuantity(item.id)" ng-model="item.quantity" class="quantity w-25" type="number" min='1' max='{{quantity}}' step=“1”>
                      <span>{{(item.product.price - (item.product.price * (item.product.promotionprice/100)))*item.quantity | number:0}}</span>
                   </div>
                 </td>
