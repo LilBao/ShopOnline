@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shoponline.Entity.Product;
 import com.shoponline.Entity.ProductDetail;
 import com.shoponline.Repository.ProductDetailDAO;
 import com.shoponline.Service.ProductDetailService;

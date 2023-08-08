@@ -41,4 +41,14 @@ $(document).ready(function () {
             }
         })
     }
+
+    window.deleteAccount = function (username) {
+        $.ajax({
+            url: '/admin-account/delete/'+ username,
+            type: 'get',
+            success: function (data) {
+                $('#tblAccount').html($(data).find('#tblAccount').children());
+            }
+        })
+    }
 })

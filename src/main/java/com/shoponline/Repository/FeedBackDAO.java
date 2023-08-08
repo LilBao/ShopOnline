@@ -13,4 +13,9 @@ import com.shoponline.Entity.Feedback;
 public interface FeedBackDAO extends JpaRepository<Feedback, Integer>{
 	@Query("select o from Feedback o where product.productid = :productid")
 	List<Feedback> getByProduct(@Param("productid") Integer id);
+	
+	@Query("select count(o) from Feedback o where product.productid = :productid")
+	Integer getCountRateProduct(@Param("productid") Integer productid);
+	
+	@Query("select count(o) from Feedback o where product.productid = :productid and o.rate = :rate")	Integer getStarRating(@Param("productid") Integer productid,@Param("rate") Integer rate);
 }

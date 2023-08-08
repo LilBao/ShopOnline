@@ -51,6 +51,16 @@ public class FeedbackServiceImp implements FeedbackService{
 	public List<Feedback> getByProduct(Integer id) {
 		return dao.getByProduct(id);
 	}
+
+	@Override
+	public Integer getCountRateProduct(Integer productid) {
+		return dao.getCountRateProduct(productid);
+	}
+
+	@Override
+	public Integer getStarRating(Integer productid, Integer rate) {
+		return dao.getStarRating(productid, rate);
+	}
 	
 	
 }

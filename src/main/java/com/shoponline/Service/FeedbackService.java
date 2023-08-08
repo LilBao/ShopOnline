@@ -12,4 +12,6 @@ public interface FeedbackService {
 	Boolean existsById(Integer id);
 	List<Feedback> getByUser(String username);
 	List<Feedback> getByProduct(Integer id);
+	Integer getCountRateProduct(Integer productid);
+	Integer getStarRating(Integer productid,Integer rate);
 }

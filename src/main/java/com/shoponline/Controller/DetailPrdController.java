@@ -56,10 +56,18 @@ public class DetailPrdController {
 		model.addAttribute("quantity", detail.getQuantity());
 		model.addAttribute("idDetail", detail.getId());
 		model.addAttribute("product", prod);
+		
 		model.addAttribute("listRelated", productSer.getByCondition(prod.getCategory().getName()));
 		model.addAttribute("listHot", productSer.getHotList(prod.getProductid()));
 		model.addAttribute("listSale", productSer.getSaleList(prod.getProductid()));
 		model.addAttribute("listFeedback", feedbackSer.getByProduct(prod.getProductid()));
+		//star rating
+		model.addAttribute("rate", feedbackSer.getCountRateProduct(prod.getProductid()));
+		model.addAttribute("rate5", feedbackSer.getStarRating(prod.getProductid(),5));
+		model.addAttribute("rate4", feedbackSer.getStarRating(prod.getProductid(),4));
+		model.addAttribute("rate3", feedbackSer.getStarRating(prod.getProductid(),3));
+		model.addAttribute("rate2", feedbackSer.getStarRating(prod.getProductid(),2));
+		model.addAttribute("rate1", feedbackSer.getStarRating(prod.getProductid(),1));
 		return "productDetail";
 	}
 	

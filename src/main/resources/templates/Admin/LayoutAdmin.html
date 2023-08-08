@@ -20,7 +20,6 @@
 		<div class="row" id="content">
 			<div th:replace="~{Admin/nav :: nav}"></div>
 			<div class="container-fluid">
-
 				<!-- Page Heading -->
 				<h1 class="h3 mb-2 text-gray-800">Tables</h1>
 				<div class="row">
@@ -107,102 +106,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- DataTales Example -->
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">Category</h6>
-					</div>
-					<div class="card-body">
-						<form:form
-							action="${pageContext.request.contextPath}/index/category/update"
-							modelAttribute="category" method="POST">
-
-							<div class="row mb-3">
-								<label for="inputEmail3" class="col-sm-2 col-form-label">Id:</label>
-								<div class="col-sm-10">
-									<form:input path="id" cssClass="form-control" id="inputEmail3" />
-								</div>
-							</div>
-
-
-							<div class="row mb-3">
-								<label for="inputEmail3" class="col-sm-2 col-form-label">Name:</label>
-								<div class="col-sm-10">
-									<form:input path="name" cssClass="form-control"
-										id="inputEmail3" />
-
-								</div>
-							</div>
-							<button
-								formaction="${pageContext.request.contextPath}/index/category/create"
-								class="btn btn-success  mt-3">
-								<i class="bi bi-save"></i> Save
-							</button>
-							<button
-								formaction="${pageContext.request.contextPath}/index/category/update"
-								class="btn btn-primary mt-3">
-								<i class="bi bi-pen"></i> Update
-							</button>
-							<button
-								formaction="${pageContext.request.contextPath}/index/category/delete/${id}"
-								formmethod="get" class="btn btn-danger mt-3">
-								<i class="bi bi-trash3"></i> Delete
-							</button>
-							<button
-								formaction="${pageContext.request.contextPath}/index/category/new"
-								formmethod="get" class="btn btn-info mt-3">
-								<i class="bi bi-arrow-repeat"></i> New
-							</button>
-						</form:form>
-
-					</div>
-				</div>
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">List
-							Categories</h6>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%"
-								cellspacing="0">
-								<thead>
-									<tr>
-										<th><a
-											href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a></th>
-										<th><a
-											href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">Name</a></th>
-										<th class="text-center">Action</th>
-									</tr>
-								</thead>
-
-								<tbody>
-									<c:forEach var="item" items="${list}">
-										<tr>
-
-											<td>${item.id}</td>
-											<td>${item.name}</td>
-											<td class="text-center"><a class='btn btn-info btn-xs'
-												href="${pageContext.request.contextPath}/index/category/edit/${item.id}"><i
-													class="bi bi-pen"></i> Edit</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/index/category?page=0&sortField=${sortField}&sortDir=${reverseSortDir}">First</a></li>
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/index/category?page=${currentPage-1}&sortField=${sortField}&sortDir=${reverseSortDir}">Back</a></li>
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/index/category?page=${currentPage+1}&sortField=${sortField}&sortDir=${reverseSortDir}">Next</a></li>
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/index/category?page=${totalPages-1}&sortField=${sortField}&sortDir=${reverseSortDir}">Last</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				</div>			
 			</div>
 		</div>
 	</div>

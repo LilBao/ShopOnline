@@ -1,5 +1,6 @@
 package com.shoponline.Rest;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,14 @@ public class OrderRest {
 			orderSer.delete(id);
 		}
 	}
+	
+	@PutMapping("api/approve-order/{orderid}")
+	public ResponseEntity<Order> approve(Authentication auth,@PathVariable("orderid") Integer orderid){
+		Order order = orderSer.getOne(orderid);
+		order.setStatus(1);
+		order.setUpdateby(auth.getName());
+		order.setUpdatedate(new Date());
+		return ResponseEntity.ok(orderSer.save(order));
+	}
+	
 }

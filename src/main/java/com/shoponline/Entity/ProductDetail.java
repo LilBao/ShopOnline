@@ -25,7 +25,7 @@ public class ProductDetail implements Cloneable{
 	private Integer quantity;
 	private Integer size;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "productid")
 	Product product;
 	
