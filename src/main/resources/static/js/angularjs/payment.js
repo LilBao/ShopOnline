@@ -11,7 +11,24 @@ app.controller("myCtrl", function ($scope, $http) {
     //        // Tạo một đối tượng JavaScript từ URLSearchParams
     const params = Object.fromEntries(urlSearchParams.entries());
     //        // Hiển thị kết quả
-    console.log(params);
+    $http.get(host + "coupon-code/" + params.code).then(resp => {
+        resp.data.quantity = resp.data.quantity - 1;
+        $http.put(host + "coupon", resp.data).then(resp => {
+        })
+    })
+    $scope.UpdateQuantity = function (id, quantity) {
+        $http.get(host + "product-detail/" + id).then(resp => {
+            resp.data.quantity = resp.data.quantity - quantity;
+            $http.put(host + "product-detail", resp.data).then(resp => {
+
+            })
+        })
+    }
+    $scope.sendReceipt = function (orderid) {
+        $http.post(host + "email/" + orderid).then(resp => {
+
+        })
+    }
     $http.get(host + "order/" + $scope.orderid).then(resp => {
         $scope.items.forEach(item => {
             $scope.orderdetail.order = resp.data;
@@ -24,19 +41,8 @@ app.controller("myCtrl", function ($scope, $http) {
                 $scope.UpdateQuantity(item.id, item.quantity);
             })
         });
-    })
-    localStorage.removeItem('cart');
-    $http.get(host + "coupon-code/" + params.code).then(resp => {
-        resp.data.quantity = resp.data.quantity - 1;
-        $http.put(host + "coupon", resp.data).then(resp => {
-        })
-    })
-    $scope.UpdateQuantity = function (id,quantity) {
-        $http.get(host + "product-detail/" + id).then(resp => {
-            resp.data.quantity = resp.data.quantity - quantity;
-            $http.put(host + "product-detail" ,resp.data).then(resp => {
+        $scope.sendReceipt(resp.data.orderid);
+        localStorage.removeItem('cart');
 
-            })
-        })
-    }
+    })
 })

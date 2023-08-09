@@ -35,7 +35,8 @@ public class PaymentReturnController {
 				@RequestParam("vnp_Amount") Float amount,@RequestParam("vnp_OrderInfo") String orderInfo,
 				@RequestParam("vnp_BankCode") String bankCode,@RequestParam("vnp_PayDate") String payDate,
 				@RequestParam("vnp_TxnRef") Integer id,@RequestParam("vnp_BankTranNo") String bankTranNo,
-				@RequestParam("vnp_CardType") String cardType,@RequestParam("vnp_TransactionStatus") String transactionStatus,Authentication auth
+				@RequestParam("vnp_CardType") String cardType,@RequestParam("vnp_TransactionStatus") String transactionStatus,
+				Authentication auth
 				) throws ParseException, InterruptedException {
 		if(auth!=null) {
 			model.addAttribute("auth",auth.getName());
@@ -48,8 +49,10 @@ public class PaymentReturnController {
 			order.setEmail(email);
             order.setAddress(address);
             order.setPhone(phone);
-            order.setAccount(accSer.getOne(auth.getName()));
-            
+            if(auth!=null) {
+    			model.addAttribute("auth",auth.getName());
+    			order.setAccount(accSer.getOne(auth.getName()));
+    		}    
             order.setTotal(amount);
             order.setSubtotal(subtotal);
             order.setDiscount(discount);

@@ -116,6 +116,32 @@ app.controller("orderCtrl", function ($scope, $http) {
 
     $scope.Provinces();
 
+    $scope.test= function(){
+        console.log(document.getElementById('voucher').value)
+    }
+    $scope.UpdateQuantity = function (id, quantity) {
+        $http.get(host + "product-detail/" + id).then(resp => {
+            resp.data.quantity = resp.data.quantity - quantity;
+            $http.put(host + "product-detail", resp.data).then(resp => {
+
+            })
+        })
+    }
+    $scope.UpdateQuantityVoucher = function () {
+        const code =document.getElementById('voucher').value;
+        $http.get(host + "coupon-code/"+code).then(resp => {
+            resp.data.quantity =resp.data.quantity-1;
+            $http.put(host + "coupon" ,resp.data).then(resp => {
+            })
+        })
+    }
+
+    $scope.sendReceipt = function (orderid) {
+        $http.post(host + "email/"+orderid).then(resp => {
+           
+        })
+    }
+
     $scope.payment = function () {
         var TypePayment = document.getElementById('cod').checked;
         const province = document.getElementById('province');
@@ -136,12 +162,13 @@ app.controller("orderCtrl", function ($scope, $http) {
                     $scope.orderdetail.size = item.size;
                     $http.post(host + "order-detail", $scope.orderdetail).then(resp => {
                         alert("thanh toán thành công");
-                        $scope.UpdateQuantity(item.id,item.quantity);
+                        $scope.UpdateQuantity(item.id, item.quantity);
                     })
                 });
                 localStorage.removeItem('cart')
                 $scope.UpdateQuantityVoucher();
-                window.location.href="/invoice?order"+resp.data.orderid;
+                $scope.sendReceipt(resp.data.orderid);
+                window.location.href="/invoice?order="+resp.data.orderid;
             })
         } else {
             var url = host + "payment?total="+$scope.infor.total+"&fullname="+$scope.infor.name+"&email="+$scope.infor.email+"&phone="
@@ -152,26 +179,6 @@ app.controller("orderCtrl", function ($scope, $http) {
             })
         }
     }
-    $scope.test= function(){
-        console.log(document.getElementById('voucher').value)
-    }
-    $scope.UpdateQuantity = function (id,quantity) {
-        $http.get(host + "product-detail/" + id).then(resp => {
-            resp.data.quantity = resp.data.quantity - quantity;
-            $http.put(host + "product-detail" ,resp.data).then(resp => {
-
-            })
-        })
-    }
-    $scope.UpdateQuantityVoucher = function () {
-        const code =document.getElementById('voucher').value;
-        $http.get(host + "coupon-code/"+code).then(resp => {
-            resp.data.quantity =resp.data.quantity-1;
-            $http.put(host + "coupon" ,resp.data).then(resp => {
-            })
-        })
-    }
-
 })
 app.controller('footerCtrl', function ($scope, $http) {
     $scope.ft = []

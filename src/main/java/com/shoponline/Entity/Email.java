@@ -1,5 +1,6 @@
 package com.shoponline.Entity;
 
+import java.io.File;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -12,10 +13,17 @@ import lombok.NoArgsConstructor;
 public class Email {
 	private String from;
 	private String to;
-	private String title;
+	private String subject;
 	private String body;
-	private List<String> bcc;
-	private List<String> cc;
-	private List<String> files;
+	private String[] bcc;
+	private String[] cc;
+	private List<File> files;
+	
+	public Email(String to, String subject, String body) {
+		this.from ="";
+		this.to = to;
+		this.subject = subject;
+		this.body = body;
+	}
 	
 }
