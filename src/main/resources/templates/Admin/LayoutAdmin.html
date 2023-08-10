@@ -10,11 +10,14 @@
 		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="../css/style_admin.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 </head>
 
-<body>
+<body ng-app="myApp" ng-controller="myCtrl">
 	<div th:replace="~{Admin/Slide :: slide}"></div>
 	<div class="container-fluid px-0" >
 		<div class="row" id="content">
@@ -32,7 +35,7 @@
 									<div class="col mr-2">
 										<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 											Earnings (Monthly)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">$ ${earningMonth}</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800" th:text="*{#numbers.formatDecimal(earningMonth,0,'COMMA',0,'POINT')}"></div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -50,7 +53,7 @@
 									<div class="col mr-2">
 										<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
 											Earnings (Annual)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">$ ${earningAnual }</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800" th:text="*{#numbers.formatDecimal(earningYear,0,'COMMA',0,'POINT')}"></div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -97,7 +100,7 @@
 									<div class="col mr-2">
 										<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
 											Pending Requests Order</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${pro }</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pending}]]</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -108,9 +111,12 @@
 					</div>
 				</div>			
 			</div>
+			<div class="col-6">
+				<canvas id="myChart"></canvas>
+			</div>
 		</div>
 	</div>
-	<script src="../js/custom.js"></script>
+	<script src="../js/custom/chart.js"></script>
 </body>
 
 </html>

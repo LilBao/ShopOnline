@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoponline.Entity.Account;
 import com.shoponline.Entity.Favorite;
+import com.shoponline.Entity.Order;
 import com.shoponline.Service.AccountService;
 import com.shoponline.Service.FavoriteService;
 import com.shoponline.Service.OrderService;
@@ -59,4 +60,12 @@ public class MyAccountController {
 		}
 	}
 	
+	@GetMapping("change-infor")
+	public String viewInvoice(@RequestParam("address") String address,@RequestParam("phone") String phone,Authentication auth) {
+		Account account = accSer.getOne(auth.getName());
+		account.setAddress(address);
+		account.setPhone(phone);
+		accSer.save(account);
+		return "myaccount";
+	}
 }

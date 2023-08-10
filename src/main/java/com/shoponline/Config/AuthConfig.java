@@ -39,7 +39,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().cors().disable();
 		
 		// Phân quyền sử dụng
-		http.authorizeRequests().antMatchers("/settings","/feedback/*").hasAnyRole()
+		http.authorizeRequests().antMatchers("/settings","/feedback/*").authenticated()
 								.anyRequest().permitAll();
 		
 		// Giao diện đăng nhập
@@ -63,6 +63,13 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		
 		// Điều khiển lỗi truy cập không đúng vai trò
 		http.exceptionHandling().accessDeniedPage("/auth/access/denied");
+		
+		//đăng nhập author2
+		http.oauth2Login().loginPage("/auth")
+						  .defaultSuccessUrl("/oauth2/login/success",true)
+						  .failureUrl("/auth/login/error")
+						  .authorizationEndpoint()
+						  .baseUri("/oauth2/authorization");
 	}
 	
 }

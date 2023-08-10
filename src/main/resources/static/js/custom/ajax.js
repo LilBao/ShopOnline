@@ -51,4 +51,16 @@ $(document).ready(function () {
             }
         })
     }
+
+    window.changeInfor = function () {
+        var address =$('#addressChange').val;
+        var phone =$('#phoneChange').val;
+        $.ajax({
+            url: 'change-infor?address='+ address+'&phone='+phone,
+            type: 'get',
+            success: function (data) {
+                $('#changeInfor').html($(data).find('#changeInfor').children());
+            }
+        })
+    }
 })

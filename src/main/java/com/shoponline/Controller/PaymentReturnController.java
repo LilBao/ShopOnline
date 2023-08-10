@@ -85,7 +85,8 @@ public class PaymentReturnController {
 		order.setStatus(3);
 		order.setAccount(accSer.getOne(auth.getName()));
 		orderSer.save(order);
-		return "redirect:/settings";
+		return "forward:/settings";
 	}
+	
 	
 }

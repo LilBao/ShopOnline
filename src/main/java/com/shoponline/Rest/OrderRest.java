@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,6 +52,8 @@ public class OrderRest {
 	public ResponseEntity<Order> update(Authentication auth,@RequestBody Order order){
 		if(auth!=null) {
 			order.setAccount(accSer.getOne(auth.getName()));
+			order.setUpdateby(auth.getName());
+			order.setUpdatedate(new Date());
 		}
 		return ResponseEntity.ok(orderSer.save(order));
 	}
@@ -71,4 +74,14 @@ public class OrderRest {
 		return ResponseEntity.ok(orderSer.save(order));
 	}
 	
+	@GetMapping("api/getTop5")
+	public ResponseEntity<List<Object[]>> getTop5(){
+		Page<Object[]> listPage = orderSer.getTop5();
+		return ResponseEntity.ok(listPage.getContent());
+	}
+	
+	@GetMapping("api/order-status/{status}")
+	public ResponseEntity<List<Order>> getStatus(@PathVariable("status") Integer status){
+		return ResponseEntity.ok(orderSer.getOrderByStatus(status));
+	}
 }

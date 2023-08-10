@@ -1,18 +1,20 @@
 package com.shoponline.ServiceImpl;
 
 import java.util.Base64;
-import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.shoponline.Entity.Account;
@@ -37,6 +39,16 @@ public class UserService implements UserDetailsService {
 		} catch (Exception e) {
 			throw new UsernameNotFoundException(username + "not found");
 		}
+	}
+	
+	public void loginFromOAuth2(OAuth2AuthenticationToken oauth2) {
+		PasswordEncoder pe = new BCryptPasswordEncoder();
+		String email = oauth2.getPrincipal().getAttribute("email");
+		String password = Long.toHexString(System.currentTimeMillis());
+		
+		UserDetails user = User.withUsername(email).password(pe.encode(password)).roles("CUS").build();
+		Authentication auth = new UsernamePasswordAuthenticationToken(user, null,user.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 
 	

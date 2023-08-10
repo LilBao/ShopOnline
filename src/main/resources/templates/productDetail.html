@@ -283,7 +283,7 @@
 				<div class="d-flex">
 					<i th:each="i : ${#numbers.sequence(1, item.rate)}" class="bi bi-star-fill"></i>
 				</div>
-				<p>[[${item.createdate}]]</p>
+				<p th:text="${#dates.format(item.createdate,'dd-MM-yyyy')}"></p>
 			</div>
 			<div class="d-flex mb-3">
 				<img class="avatar" th:src="@{|/api/file/avatar/${item.account.avatar}|}" alt="">

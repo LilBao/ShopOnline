@@ -3,6 +3,9 @@ package com.shoponline.ServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shoponline.Entity.Order;
@@ -49,5 +52,24 @@ public class OrderServiceImp implements OrderService{
 	public List<Order> getOrderByStatus(Integer status) {
 		return dao.getOrderByStatus(status);
 	}
+
+	@Override
+	public Float getEarningMoth() {
+		return dao.getEarningMonth();
+	}
+
+	@Override
+	public Float getEarningYear() {
+		return dao.getEarningAnnual();
+	}
+
+	@Override
+	public Integer getPendingRequest() {
+		return dao.getPendingRequest();
+	}
 	
+	public Page<Object[]> getTop5(){
+		Pageable pageable = PageRequest.of(0, 5);
+		return dao.getTop5(pageable);
+	}
 }

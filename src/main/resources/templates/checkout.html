@@ -32,7 +32,7 @@
                     <a href="">Thông tin giao hàng</a>
                 </div>
                 <h5>Thông tin giao hàng</h5>
-                <div class="d-flex">
+                <div ng-if="${account} ==null" class="d-flex">
                     <p>Bạn đã có tài khoản?</p>
                     <a href="">Đăng nhập</a>
                 </div>
@@ -182,8 +182,8 @@
                                         <b>Total to pay</b>
                                     </div>
                                     <div class="col text-right">
-                                        <span id="total" ng-if="cart.getAmount() > 300000">{{cart.getAmount() | number:0}}đ</span>
-                                        <span id="total" ng-if="cart.getAmount() < 300000">{{cart.getAmount() + 30000 | number:0}}đ</span>
+                                        <span id="total" ng-if="cart.getAmount() > 300000">{{cart.getAmount()}}</span>
+                                        <span id="total" ng-if="cart.getAmount() < 300000">{{cart.getAmount() + 30000}}</span>
                                     </div>
                                 </div>
                             </div>

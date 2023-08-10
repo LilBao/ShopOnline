@@ -70,10 +70,10 @@
 										id="inputEmail3" />
 								</div>
 							</div>
-							<button ng-click="create()" class="btn btn-success  mt-3"><i class="bi bi-save"></i> Save </button>
-							<button ng-click="update()" class="btn btn-primary mt-3"><i class="bi bi-pen"></i> Update</button>
-							<button ng-click="delete(form.cateid)" class="btn btn-danger mt-3"><i class="bi bi-trash3"></i> Delete </button>
-							<button ng-click="reset()" class="btn btn-info mt-3"> <i class="bi bi-arrow-repeat"></i> New </button>
+							<button ng-click="create()" class="btn btn-outline-success  mt-3"><i class="bi bi-person-plus-fill"></i> Save </button>
+							<button ng-click="update()" class="btn btn-outline-success mt-3"><i class="bi bi-pen"></i> Update</button>
+							<button ng-click="delete(form.cateid)" class="btn btn-outline-danger mt-3"><i class="bi bi-trash-fill"></i> Delete </button>
+							<button ng-click="reset()" class="btn btn-outline-light mt-3"> <i class="bi bi-recycle"></i> New </button>
 						</form>
 
 					</div>
@@ -103,7 +103,7 @@
 
 										<td>{{item.cateid}}</td>
 										<td>{{item.name}}</td>
-										<td class="text-center"><button ng-click="edit(item.cateid)" class='btn btn-info btn-xs'><i class="bi bi-pen"></i> Edit</button></td>
+										<td class="text-center"><button ng-click="edit(item.cateid)" class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i> Edit</button></td>
 									</tr>
 								</tbody>
 							</table>

@@ -2,6 +2,8 @@ package com.shoponline.Service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.shoponline.Entity.Order;
 
 public interface OrderService {
@@ -12,4 +14,8 @@ public interface OrderService {
 	Boolean existsById(Integer id);
 	List<Order> getOrderByUsername(String username);
 	List<Order> getOrderByStatus(Integer status);
+	Float getEarningMoth();
+	Float getEarningYear();
+	Integer getPendingRequest();
+	Page<Object[]> getTop5();
 }
