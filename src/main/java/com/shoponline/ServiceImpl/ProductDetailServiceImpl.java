@@ -50,6 +50,11 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public ProductDetail getByProductSize(Integer id, Integer size) {
 		return dao.getByProductSize(id, size);
 	}
+
+	@Override
+	public Object[] getInventory() {
+		return dao.getInventory();
+	}
 	
 	
 }

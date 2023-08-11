@@ -72,4 +72,10 @@ public class OrderServiceImp implements OrderService{
 		Pageable pageable = PageRequest.of(0, 5);
 		return dao.getTop5(pageable);
 	}
+
+	@Override
+	public Object[] getRevenueOfWeek() {
+		return dao.getRevenueOfWeek();
+	}
+	
 }

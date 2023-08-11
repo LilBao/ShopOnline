@@ -25,11 +25,11 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Product</h1>
-                <button class="btn btn-primary" ng-click="reset()" data-bs-toggle="modal" data-bs-target="#voucher">New</button>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Product</h6>
+                    <div class="card-header py-3 d-flex justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Coupon</h6>
+                        <button class="btn btn-outline-dark" ng-click="reset()" data-bs-toggle="modal" data-bs-target="#voucher"><i class="bi bi-plus-lg"></i></button>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -115,9 +115,9 @@
                                                 <input class="form-control my-2" type="date" ng-model="coupon.dateend">
                                             </div>
                                         </div>
-                                        <button ng-click="create()" class="btn btn-success mt-3"><i class="bi bi-save"></i>
+                                        <button ng-click="create()"  class="btn btn-outline-success  mt-3"><i class="bi bi-person-plus-fill"></i>
                                             Save</button>
-                                        <button ng-click="delete(coupon.id)" ng-if = "coupon.id!=null" class="btn btn-danger mt-3"><i class="bi bi-trash3"></i> Delete</button>
+                                        <button ng-click="delete(coupon.id)" ng-if = "coupon.id!=null" class="btn btn-outline-danger mt-3"><i class="bi bi-trash-fill"></i> Delete</button>
                                     </form>
                                 </div>
                                 </div>

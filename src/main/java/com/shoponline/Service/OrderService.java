@@ -18,4 +18,5 @@ public interface OrderService {
 	Float getEarningYear();
 	Integer getPendingRequest();
 	Page<Object[]> getTop5();
+	Object[] getRevenueOfWeek();
 }

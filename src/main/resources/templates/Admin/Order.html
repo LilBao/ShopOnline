@@ -79,12 +79,7 @@
                                                 <td>{{item.phone}}</td>
                                                 <td>{{item.total}}</td>
                                                 <td class="text-center">
-                                                    <button ng-click="edit('role',item.id)"
-                                                        class='btn btn-info btn-xs'><i
-                                                            class="bi bi-pen"></i>Edit</button>
-                                                    <button ng-click="confirmOrder(item.orderid)"
-                                                        class='btn btn-info btn-xs'><i
-                                                            class="bi bi-pen"></i>Approve</button>
+                                                    <button ng-click="editOrder(item.orderid)" data-bs-toggle="modal" data-bs-target="#bill" class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i>Edit</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -150,13 +145,12 @@
                                                 <td>{{item.email}}</td>
                                                 <td>{{item.phone}}</td>
                                                 <td>{{item.total}}</td>
-                                                <td class="text-center">
-                                                    <button ng-click="edit('role',item.id)"
-                                                        class='btn btn-info btn-xs'><i
-                                                            class="bi bi-pen"></i>Edit</button>
-                                                    <button ng-click="confirmOrder(item.orderid)"
-                                                        class='btn btn-info btn-xs'><i
-                                                            class="bi bi-pen"></i>Approve</button>
+                                                <td class="">
+                                                    <button ng-click="editOrder(item.orderid)" data-bs-toggle="modal" data-bs-target="#bill" class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i></button>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <button ng-click="confirmOrder(item.orderid)" class="btn btn-outline-success"><i class="bi bi-check-lg"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -216,11 +210,11 @@
                                         <td>{{item.email}}</td>
                                         <td>{{item.phone}}</td>
                                         <td>{{item.total}}</td>
-                                        <td class="text-center">
-                                            <button ng-click="edit('role',item.id)" class='btn btn-info btn-xs'><i
-                                                    class="bi bi-pen"></i>Edit</button>
-                                            <button ng-click="deleteOrder(item.orderid)" class='btn btn-info btn-xs'><i
-                                                    class="bi bi-pen"></i>Approve</button>
+                                        <td class="">
+                                            <button ng-click="editOrder(item.orderid)" data-bs-toggle="modal" data-bs-target="#bill" class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i></button>   
+                                        </td>
+                                        <td>
+                                            <button ng-click="deleteOrder(item.orderid)" class="btn btn-outline-danger"><i class="bi bi-x-lg"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -229,7 +223,22 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>         
+          <!-- The Modal -->
+          <div class="modal" id="bill">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div th:replace="~{Admin/Bill :: invoice}">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     <script src="../js/custom.js"></script>
 </body>

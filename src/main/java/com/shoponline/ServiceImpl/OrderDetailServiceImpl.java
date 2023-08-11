@@ -44,5 +44,10 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	public List<OrderDetail> getByOrderId(Integer id) {
 		return dao.getByOrderId(id);
 	}
+
+	@Override
+	public Object[] getBestSelling() {
+		return dao.getBestSelling();
+	}
 	
 }

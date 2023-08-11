@@ -12,4 +12,5 @@ public interface FavoriteService {
 	Boolean existsById(Integer id);
 	List<Favorite> getByUser(String username);
 	Favorite existsProduct(String username,Integer id);
+	Object[] getPrdFavorited();
 }

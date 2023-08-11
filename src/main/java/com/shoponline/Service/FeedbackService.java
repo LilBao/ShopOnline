@@ -14,4 +14,5 @@ public interface FeedbackService {
 	List<Feedback> getByProduct(Integer id);
 	Integer getCountRateProduct(Integer productid);
 	Integer getStarRating(Integer productid,Integer rate);
+	Object[] getRatingFb();
 }

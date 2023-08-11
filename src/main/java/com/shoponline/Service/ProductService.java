@@ -16,4 +16,6 @@ public interface ProductService {
 	List<Product> getAllNotNull();
 	List<Product> getHotList(Integer productid);
 	List<Product> getSaleList(Integer productid);
+	List<Product> getByKeyword(String key);
+
 }

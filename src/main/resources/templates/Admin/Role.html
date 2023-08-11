@@ -36,7 +36,7 @@
 				<div class="tab-pane container active" id="role">
 					<div class="container-fluid">
 						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+						<h1 class="h3 mb-2 text-gray-800">Roles</h1>
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
@@ -56,25 +56,17 @@
 											<input ng-model="form.name" class="form-control" id="" />
 										</div>
 									</div>
-									<button ng-click="create('role')" class="btn btn-success  mt-3"><i
-											class="bi bi-save"></i> Save
-									</button>
-									<button ng-click="update('role')" class="btn btn-primary mt-3"><i
-											class="bi bi-pen"></i>
-										Update</button>
-									<button ng-click="delete('role',form.id)" class="btn btn-danger mt-3"><i
-											class="bi bi-trash3"></i> Delete </button>
-									<button ng-click="reset()" class="btn btn-info mt-3"> <i
-											class="bi bi-arrow-repeat"></i> New
-									</button>
+									<button ng-click="create('role')" class="btn btn-outline-success  mt-3"><i class="bi bi-person-plus-fill"></i> Save</button>
+									<button ng-click="update('role')" class="btn btn-outline-success mt-3"><i class="bi bi-pen"></i> Update</button>
+									<button ng-click="delete('role',form.id)" class="btn btn-outline-danger mt-3"><i class="bi bi-trash-fill"></i> Delete </button>
+									<button ng-click="reset()" class="btn btn-outline-light mt-3"> <i class="bi bi-recycle"></i>New</button>
 								</form>
 
 							</div>
 						</div>
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">List
-									Categories</h6>
+								<h6 class="m-0 font-weight-bold text-primary">List</h6>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -97,7 +89,7 @@
 												<td>{{item.id}}</td>
 												<td>{{item.name}}</td>
 												<td class="text-center"><button ng-click="edit('role',item.id)"
-														class='btn btn-info btn-xs'><i class="bi bi-pen"></i>
+													class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i>
 														Edit</button></td>
 											</tr>
 										</tbody>

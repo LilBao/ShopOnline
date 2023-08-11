@@ -64,4 +64,9 @@ public class FavoriteRest {
 		}
 		return ResponseEntity.ok(favorite);
 	}
+	
+	@GetMapping("/api/top-product-favorite")
+	public ResponseEntity<Object[]> prodFavor() {
+		return ResponseEntity.ok(favoriteSer.getPrdFavorited());
+	}
 }

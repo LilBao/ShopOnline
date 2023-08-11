@@ -28,8 +28,7 @@ public class FeedbackServiceImp implements FeedbackService{
 
 	@Override
 	public List<Feedback> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAll();
 	}
 
 	@Override
@@ -60,6 +59,11 @@ public class FeedbackServiceImp implements FeedbackService{
 	@Override
 	public Integer getStarRating(Integer productid, Integer rate) {
 		return dao.getStarRating(productid, rate);
+	}
+
+	@Override
+	public Object[] getRatingFb() {
+		return dao.getRatingFb();
 	}
 	
 	

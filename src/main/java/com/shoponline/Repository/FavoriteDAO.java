@@ -18,6 +18,6 @@ public interface FavoriteDAO extends JpaRepository<Favorite, Integer>{
 	Favorite getByProductUser(@Param("username") String username, @Param("productid") Integer productid);
 	
 	@Query("Select p.productid, p.name, p.price, p.thumbnail, count(o.product.productid) from Favorite o join o.product p "
-			+ "group by p.productid, p.name, p.price, p.thumbnail, count(o.product.productid) order by count(o.product.productid) desc")
-	public List<Object[]> getPrdFavorited();
+			+ "group by p.productid, p.name, p.price, p.thumbnail order by count(o.product.productid) desc")
+	Object[] getPrdFavorited();
 }

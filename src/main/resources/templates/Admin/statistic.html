@@ -12,9 +12,10 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="../css/style_admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="../js/angularjs/order.js"></script>
+    <script src="../js/angularjs/chart.js"></script>
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
@@ -24,134 +25,46 @@
             <div th:replace="~{Admin/nav :: nav}"></div>
             <ul class="nav nav-tabs my-3 ms-4 col-6">
                 <li class="nav-item">
-                    <a class="nav-link active" ng-init="entity = 'role'" data-bs-toggle="tab" href="#product">product</a>
+                    <a class="nav-link active" data-bs-toggle="tab" href="#inventory">Inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#revenue">Revenue</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#fav">Top Product  Favorite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#fb">Top Product Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#bs">Best Selling</a>
                 </li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane container active" id="role">
+                <div class="tab-pane container active" id="inventory">
                     <div class="container-fluid">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">List
-                                    Orer</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a>
-                                                </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">name</a>
-                                                </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">address</a>
-                                                </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">email</a>
-                                                </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">phone</a>
-                                                </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">total</a>
-                                                </th>
-                                                <th class="text-center">Action</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr th:each="item : ${listOrderApprove}">
-                                                <td>[[${item.orderid}]]</td>
-                                                <td>[[${item.name}]]</td>
-                                                <td>[[${item.address}]]</td>
-                                                <td>[[${item.email}]]</td>
-                                                <td>[[${item.phone}]]</td>
-                                                <td>[[${item.total}]]</td>
-                                                <td class="text-center">
-                                                    <button ng-click="edit('role',item.id)" class='btn btn-info btn-xs'><i class="bi bi-pen"></i>Edit</button>
-                                                    <button th:attr="ng-click=@{|confirmOrder(${item.orderid})|}" class='btn btn-info btn-xs'><i class="bi bi-pen"></i>Approve</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link"
-                                                href="${pageContext.request.contextPath}/index/category?page=0&sortField=${sortField}&sortDir=${reverseSortDir}">First</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="${pageContext.request.contextPath}/index/category?page=${currentPage-1}&sortField=${sortField}&sortDir=${reverseSortDir}">Back</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="${pageContext.request.contextPath}/index/category?page=${currentPage+1}&sortField=${sortField}&sortDir=${reverseSortDir}">Next</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                href="${pageContext.request.contextPath}/index/category?page=${totalPages-1}&sortField=${sortField}&sortDir=${reverseSortDir}">Last</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="row">
+                            <canvas id="chartInventory"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane container fade" id="author">
-                    <h1 class="h3 mb-2 text-gray-800">Author</h1>
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a>
-                                        </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">name</a>
-                                        </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">address</a>
-                                        </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">email</a>
-                                        </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">phone</a>
-                                        </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">total</a>
-                                        </th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr th:each="item : ${listOrderDecline}">
-                                        <td>[[${item.orderid}]]</td>
-                                        <td>[[${item.name}]]</td>
-                                        <td>[[${item.address}]]</td>
-                                        <td>[[${item.email}]]</td>
-                                        <td>[[${item.phone}]]</td>
-                                        <td>[[${item.total}]]</td>
-                                        <td class="text-center">
-                                            <button ng-click="edit('role',item.id)" class='btn btn-info btn-xs'><i class="bi bi-pen"></i>Edit</button>
-                                            <button th:attr="ng-click=@{|deleteOrder(${item.orderid})|}" class='btn btn-info btn-xs'><i class="bi bi-pen"></i>Cancellation</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="tab-pane container fade" id="fav">
+                    <div class="row">
+                        <canvas id="chartTopPrdFavor"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane container fade" id="fb">
+                    <div class="row">
+                        <canvas id="chartTopPrdFeedBack"></canvas>
+                    </div>
+                </div>
+                <div class="tab-pane container fade" id="bs">
+                    <div class="row">
+                        <canvas id="chartBestSelling"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../js/custom/chart.js"></script>
 </body>
 
 </html>

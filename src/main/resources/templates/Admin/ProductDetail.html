@@ -58,10 +58,10 @@
 									<input class="form-control" id="inputEmail3" ng-model="prdDetail.size"></input>
 								</div>
 							</div>
-							<button ng-click="createPrdDetail()"class="btn btn-success mt-3"><i class="bi bi-save"></i> Save</button>
-							<button ng-click="updatePrdDetail()"class="btn btn-success mt-3"><i class="bi bi-save"></i> Update</button>
-							<button ng-click="deletePrdDetail(prdDetail.id)"class="btn btn-success mt-3"><i class="bi bi-save"></i> Delete</button>
-							<button ng-click="reset()"class="btn btn-success mt-3"><i class="bi bi-save"></i> Reset</button>
+							<button ng-click="createPrdDetail()" class="btn btn-outline-success  mt-3"><i class="bi bi-person-plus-fill"></i> Save</button>
+							<button ng-click="updatePrdDetail()" class="btn btn-outline-success mt-3"><i class="bi bi-pen"></i> Update</button>
+							<button ng-click="deletePrdDetail(prdDetail.id)" class="btn btn-outline-danger mt-3"><i class="bi bi-trash-fill"></i> Delete</button>
+							<button ng-click="reset()" class="btn btn-outline-light mt-3"> <i class="bi bi-recycle"></i> Reset</button>
 						</form>
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
@@ -85,8 +85,8 @@
 									<td>{{item.quantity}}</td>
 									<td>{{item.size}}</td>						
 									<td class="text-center">
-										<button ng-click="edit(item.id)" class='btn btn-info btn-xs'><i class="bi bi-pen"></i> Edit</button>
-										<button ng-click="deletePrdDetail(item.id)" class='btn btn-info btn-xs'><i class="bi bi-pen"></i> Delete</button>
+										<button ng-click="edit(item.id)" class='btn btn-outline-dark btn-xs'><i class="bi bi-pencil-fill"></i> Edit</button>
+										<button ng-click="deletePrdDetail(item.id)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Delete</button>
 									</td>
 								</tr>
 							</tbody>

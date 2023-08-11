@@ -11,5 +11,5 @@ public interface OrderDetailService {
 	OrderDetail getOne(Integer id);
 	Boolean existsById(Integer id);
 	List<OrderDetail> getByOrderId(Integer id);
-	
+	Object[] getBestSelling();
 }

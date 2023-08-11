@@ -26,5 +26,8 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	List<Product> getAllHot(@Param("prdid") Integer prdid);
 	
 	@Query("select o from Product o where o.promotionprice > 0 and o.status = 1 and not o.productid= :prdid")
-	List<Product> getSale(@Param("prdid") Integer prdid);	
+	List<Product> getSale(@Param("prdid") Integer prdid);
+	
+	@Query("select o from Product o where o.name like :keyword and o.status = 1")
+	List<Product> getByKey(@Param("keyword") String keyword);
 }

@@ -84,4 +84,9 @@ public class OrderRest {
 	public ResponseEntity<List<Order>> getStatus(@PathVariable("status") Integer status){
 		return ResponseEntity.ok(orderSer.getOrderByStatus(status));
 	}
+	
+	@GetMapping("api/revenue-of-week")
+	public ResponseEntity<Object[]> getStatus(){
+		return ResponseEntity.ok(orderSer.getRevenueOfWeek());
+	}
 }

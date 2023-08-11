@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class StatisticController {
-	
+public class StatisticController {	
 	@GetMapping("admin-statistic")
-	public String view() {
-		return "statistic";
+	public String view() {		
+		return "Admin/statistic";
 	}
+	
 }

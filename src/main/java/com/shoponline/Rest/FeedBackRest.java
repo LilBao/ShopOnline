@@ -1,7 +1,5 @@
 package com.shoponline.Rest;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,7 @@ import com.shoponline.Repository.FeedBackDAO;
 public class FeedBackRest {
 	@Autowired
 	FeedBackDAO dao;
-	@GetMapping("api/top-product-rating")
+	@GetMapping("api/top-product-feedback")
 	public ResponseEntity<Object[]> get(){
 		return ResponseEntity.ok(dao.getRatingFb());
 	}

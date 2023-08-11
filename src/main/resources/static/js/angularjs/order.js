@@ -61,6 +61,34 @@ app.controller('myCtrl', function ($scope, $http) {
             console.log("that bai");
         })
     }
+
+    $scope.editOrder = function (id) {
+        $http.get(host + "/order/" + id ).then(resp => {
+            $scope.order = resp.data;
+            $scope.findOrderdetail(resp.data.orderid)
+        }).catch(error => {
+            console.log("that bai");
+        })
+    }
+
+    $scope.findOrderdetail = function (id) {
+        $http.get(host + "/orders-detail/"+id ).then(resp => {
+            $scope.orderdetail = resp.data;
+        }).catch(error => {
+            console.log("that bai");
+        })
+    }
+
+    $scope.readFile = function (files) {
+        return host+"/file/images/"+files;
+    }
+    $scope.removeItem=function(id){
+        $http.delete(host + "/order-detail/"+id ).then( 
+            $scope.editOrder(id)
+        ).catch(error => {
+            console.log("that bai");
+        })
+    }
     $scope.load();
     $scope.load1();
     $scope.load3();

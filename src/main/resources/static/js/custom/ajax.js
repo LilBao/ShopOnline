@@ -63,4 +63,14 @@ $(document).ready(function () {
             }
         })
     }
+
+    window.searchProduct = function (key) {
+        $.ajax({
+            url: 'search?keyword='+ key,
+            type: 'get',
+            success: function (data) {
+                $('#resultcontent').html($(data).find('#resultcontent').children());
+            }
+        })
+    }
 })

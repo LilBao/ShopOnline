@@ -12,4 +12,5 @@ public interface ProductDetailService {
 	Boolean existsById(Integer id);
 	List<ProductDetail> getByProduct(Integer id);
 	ProductDetail getByProductSize(Integer id, Integer size);
+	Object[] getInventory();
 }

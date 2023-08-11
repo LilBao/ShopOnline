@@ -31,4 +31,16 @@ public interface OrderDAO extends JpaRepository<Order, Integer>{
 	@Query(value="select a.fullname, a.avatar, o.username ,sum(total) as 'total' from orders o inner join accounts a on o.username = a.username\r\n"
 			+ "		where o.username is not null and o.status = 1 group by a.fullname, a.avatar, o.username order by total desc",nativeQuery = true)
 	Page<Object[]> getTop5(Pageable pageable);
+	
+	@Query(value="SELECT DATEPART(WEEKDAY, aw.weekday) AS day_of_week, COALESCE(SUM(o.total), 0) AS total_revenue\r\n"
+			+ "FROM (SELECT DATEADD(DAY, n, DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0)) AS weekday\r\n"
+			+ "FROM (SELECT TOP 7 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) - 1 AS n\r\n"
+			+ "FROM master.dbo.spt_values\r\n"
+			+ ") AS Numbers\r\n"
+			+ ") AS aw\r\n"
+			+ "LEFT JOIN orders o ON aw.weekday = DATEADD(DAY, DATEDIFF(DAY, 0, o.createDate), 0)\r\n"
+			+ "    AND o.STATUS = 1\r\n"
+			+ "GROUP BY DATEPART(WEEKDAY, aw.weekday)\r\n"
+			+ "ORDER BY DATEPART(WEEKDAY, aw.weekday);",nativeQuery = true)
+	Object[] getRevenueOfWeek();
 }

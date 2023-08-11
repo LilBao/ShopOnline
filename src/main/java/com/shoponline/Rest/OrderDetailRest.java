@@ -49,4 +49,14 @@ public class OrderDetailRest {
 			orderDetailSer.delete(id);
 		}
 	}
+	
+	@GetMapping("api/best-selling")
+	public ResponseEntity<Object[]> bestselling(){
+		return ResponseEntity.ok(orderDetailSer.getBestSelling());
+	}
+	
+	@GetMapping("api/orders-detail/{id}")
+	public ResponseEntity<List<OrderDetail>> getOrderDetailByid(@PathVariable("id") Integer id){
+		return ResponseEntity.ok(orderDetailSer.getByOrderId(id));
+	}
 }

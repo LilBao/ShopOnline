@@ -14,6 +14,7 @@ app.controller("myCtrl",function($scope,$http){
         const item = angular.copy($scope.form)
         $http.post(url,item).then(resp => {
             $scope.reset();
+            $scope.loadAll();
         }).catch(error =>{
 
         })

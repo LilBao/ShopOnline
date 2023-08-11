@@ -50,6 +50,11 @@ public class FavoriteServiceImpl implements FavoriteService{
 	public Favorite existsProduct(String username,Integer id) {
 		return dao.getByProductUser(username, id);
 	}
+
+	@Override
+	public Object[] getPrdFavorited() {
+		return dao.getPrdFavorited();
+	}
 	
 	
 }

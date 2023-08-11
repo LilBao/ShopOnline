@@ -44,4 +44,9 @@ public class ProductDetailRest {
 	public void delete(@PathVariable("id") Integer id){
 		productDetailSer.delete(id);
 	}
+	
+	@GetMapping("api/inventory")
+	public ResponseEntity<Object[]> getProductId(){
+		return ResponseEntity.ok(productDetailSer.getInventory());
+	}
 }

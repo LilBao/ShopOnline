@@ -70,5 +70,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getSaleList(Integer productid) {
 		return dao.getSale(productid);
 	}
+
+	@Override
+	public List<Product> getByKeyword(String key) {
+		return dao.getByKey(key);
+	}
 	
 }

@@ -1,118 +1,137 @@
-
-    <header class="px-0 py-0">
-        <div class="d-flex bg-dark text-center text-white pt-1 ">
-            <div class="mx-auto">free shipping on all u.s orders over 300.000VND</div>
-            <div class="float-end">
-                <div th:if="${auth} !=null" class="nav-item dropdown">
-                    <a class="my-account nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <img th:src="@{|/api/file/avatar/${session['avatar']}|}" class="rounded-circle" height="22"
-                            loading="lazy" />
-                    </a>
-                    <ul class="settings dropdown-menu dropdown-menu-end w-50">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0 me-3">
-                                        <div class="">
-                                            <img th:src="@{|/api/file/avatar/${session['avatar']}|}" height="50"
-                                                class="w-15 rounded-circle" />
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">[[${#authentication.name}]]</span>
-                                        <div th:each="item : ${#authentication.authorities}">
-                                            <small class="text-muted">[[${item}]]</small>
-                                        </div>
+<header class="px-0 py-0">
+    <div class="d-flex bg-dark text-center text-white pt-1 ">
+        <div class="mx-auto">free shipping on all u.s orders over 300.000VND</div>
+        <div class="float-end">
+            <div th:if="${auth} !=null" class="nav-item dropdown">
+                <a class="my-account nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    <img th:src="@{|/api/file/avatar/${session['avatar']}|}" class="rounded-circle" height="22"
+                        loading="lazy" />
+                </a>
+                <ul class="settings dropdown-menu dropdown-menu-end w-50">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="">
+                                        <img th:src="@{|/api/file/avatar/${session['avatar']}|}" height="50"
+                                            class="w-15 rounded-circle" />
                                     </div>
                                 </div>
+                                <div class="flex-grow-1">
+                                    <span class="fw-semibold d-block">[[${#authentication.name}]]</span>
+                                    <div th:each="item : ${#authentication.authorities}">
+                                        <small class="text-muted">[[${item}]]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{/settings}">
+                            <i class="bx bx-user me-2"></i>
+                            <span class="align-middle">Settings</span>
+                        </a>
+                    </li>
+                    <li th:if="${#request.isUserInRole('STAFF')} or ${#request.isUserInRole('DIR')}">
+                        <a class="dropdown-item" th:href="@{/admin-index}">
+                            <i class="bx bx-cog me-2"></i>
+                            <span class="align-middle">Bussiness</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{|/auth/logoff|}">
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${auth}==null">
+                <a th:href="@{/auth}">LOGIN</a>
+            </div>
+        </div>
+        <!--THANH NAV-->
+    </div>
+    <nav class="navbar navbar-expand-lg" style="background-color: black;">
+        <div class="container-fluid">
+            <!-- nút collaspe -->
+            <button class="navbar-toggler navbar-light buttonCss" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls=" offcanvasExample">
+                <span class="navbar-toggler-icon" style="color: snow;"></span>
+            </button>
+            <!-- offcanvas -->
+            <div class=" offcanvas offcanvas-start " style="background-color: black;" tabindex="-1"
+                id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <a class="offcanvas-title" id="offcanvasExampleLabel" href="#">
+                        <img class="w-100" src="images/logoChrome.png" alt="">
+                    </a>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown distant">
+                            <a class="nav-link" th:href="@{|/product-collections|}">
+                                Jewelry
                             </a>
+                            <ul class="dropdown-content">
+                                <li><a class="dropdown-item" th:href="@{|/product-collections/Earrings|}">Khuyên
+                                        tai</a></li>
+                                <li><a class="dropdown-item" th:href="@{|/product-collections/Ring|}">Nhẫn</a></li>
+                                <li><a class="dropdown-item" th:href="@{|/product-collections/Necklace|}">Dây
+                                        chuyền</a></li>
+                                <li><a class="dropdown-item" th:href="@{|/product-collections/Bracelet|}">Vòng
+                                        tay</a></li>
+                            </ul>
                         </li>
-                        <li>
-                            <div class="dropdown-divider"></div>
+                        <li class="nav-item distant">
+                            <a class="nav-link" th:href="@{|/product-collections/Accessories|}">Accessories</a>
                         </li>
-                        <li>
-                            <a class="dropdown-item" th:href="@{/settings}">
-                                <i class="bx bx-user me-2"></i>
-                                <span class="align-middle">Settings</span>
-                            </a>
-                        </li>
-                        <li th:if="${#request.isUserInRole('STAFF')} or ${#request.isUserInRole('DIR')}">
-                            <a class="dropdown-item" th:href="@{/admin-index}">
-                                <i class="bx bx-cog me-2"></i>
-                                <span class="align-middle">Bussiness</span>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="dropdown-divider"></div>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" th:href="@{|/auth/logoff|}">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Log Out</span>
-                            </a>
+                        <li class="nav-item distant">
+                            <a class="nav-link" href="#">Sale</a>
                         </li>
                     </ul>
-                </div>
-                <div th:if="${auth}==null">
-                    <a th:href="@{/auth}">LOGIN</a>
-                </div>
-            </div>
-            <!--THANH NAV-->
-        </div>
-        <nav class="navbar navbar-expand-lg" style="background-color: black;">
-            <div class="container-fluid">
-                <!-- nút collaspe -->
-                <button class="navbar-toggler navbar-light buttonCss" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample" aria-controls=" offcanvasExample">
-                    <span class="navbar-toggler-icon" style="color: snow;"></span>
-                </button>
-                <!-- offcanvas -->
-                <div class=" offcanvas offcanvas-start " style="background-color: black;" tabindex="-1"
-                    id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                        <a class="offcanvas-title" id="offcanvasExampleLabel" href="#">
-                            <img class="w-100" src="images/logoChrome.png" alt="">
-                        </a>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown distant">
-                                <a class="nav-link" th:href="@{|/product-collections|}">
-                                    Jewelry
-                                </a>
-                                <ul class="dropdown-content">
-                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Earrings|}">Khuyên
-                                            tai</a></li>
-                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Ring|}">Nhẫn</a></li>
-                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Necklace|}">Dây
-                                            chuyền</a></li>
-                                    <li><a class="dropdown-item" th:href="@{|/product-collections/Bracelet|}">Vòng
-                                            tay</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item distant">
-                                <a class="nav-link" th:href="@{|/product-collections/Accessories|}">Accessories</a>
-                            </li>
-                            <li class="nav-item distant">
-                                <a class="nav-link" href="#">Sale</a>
-                            </li>
-                        </ul>
-                        <div class="d-flex distant">
-                            <button type="button" class="btn btn-primary buttonCss" data-bs-toggle="modal"
-                                data-bs-target="#myModal">
-                                Search
-                            </button>
-                            <!-- The Modal -->
-                            <div class="modal search" id="myModal" style="width: 100%;">
-                                <div class="modal-dialog mt-0">
-                                    <div class="modal-content">
-                                        <!-- Modal body -->
-                                        <div class="modal-body d-flex py-5">
-                                            <input class="form-control" type="text">
-                                            <a clas="btn btn-primary" type="button">search</a>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <div class="d-flex distant">
+                        <button type="button" class="btn btn-primary buttonCss" data-bs-toggle="modal"
+                            data-bs-target="#myModal">
+                            Search
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal search" id="myModal" style="width: 100%;">
+                            <div class="modal-dialog mt-0">
+                                <div class="modal-content">
+                                    <!-- Modal body -->
+                                    <div class="modal-body py-3">
+                                        <form action="/search">
+                                            <div class="input-group mb-3">
+                                                <input oninput="searchProduct(this.value)" id="search" name="keyword" type="text" class="form-control"
+                                                    placeholder="Search">
+                                                <button class="btn" type="submit"><i class="bi bi-search-heart"></i></button>
+                                            </div>
+                                        </form>
+                                        <div id="resultcontent" class="resultcontent">
+                                            <div th:each="item, iterStat : ${listProduct}" th:if="${iterStat.index &lt; 4}" class="my-3" >
+                                                <a class="d-flex" th:href="@{|/product/${item.productid}|}">
+                                                    <div class="thumbnail">
+                                                        <img class="avatar" th:src="@{|api/file/images/${item.thumbnail}|}" alt="">
+                                                    </div>
+                                                    <div class="titles d-flex flex-column mx-2">
+                                                        <h6>[[${item.name}]]</h6>
+                                                        <span th:utext="${item.price}"></span>
+                                                    </div>     
+                                                </a>
+                                                <hr>
+                                            </div>
+                                            <div th:if="${listProduct !=null}">
+                                                <a class="text-center listSearchAll" onclick="window.location.href='/search?keyword='+document.getElementById('search').value">Hiển thị thêm [[${listProduct.size()}]] sản phẩm</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -120,10 +139,11 @@
                         </div>
                     </div>
                 </div>
-                <a class="navbar-brand logo" th:href="@{|/index|}"><img class="w-100" src="../images/logoChrome.png"
-                        alt=""></a>
-                <a th:href="@{/cart}" type="button" class="btn btn-primary buttonCss">
-                    Bag <span th:id="cartqty" class="badge bg-danger">{{cart.getCount()}}</span>
-                </a>
-        </nav>
-    </header>
+            </div>
+            <a class="navbar-brand logo" th:href="@{|/index|}"><img class="w-100" src="../images/logoChrome.png"
+                    alt=""></a>
+            <a th:href="@{/cart}" type="button" class="btn btn-primary buttonCss">
+                Bag <span th:id="cartqty" class="badge bg-danger">{{cart.getCount()}}</span>
+            </a>
+    </nav>
+</header>
