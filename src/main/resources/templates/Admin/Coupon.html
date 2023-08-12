@@ -45,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in listCoupon">
+                                <tr ng-repeat="item in pager.items">
                                     <td>{{item.id}}</td>
                                     <td>{{item.code}}</td>
                                     <td>{{item.value}}</td>
@@ -59,6 +59,13 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <ul class="pagination d-flex justify-content-end">
+                            <li class="page-item"><a id="prev" class="page-link" ng-click="pager.prev()">Previous</a></li>
+                            <li ng-repeat="i in pager.getNumbers(pager.count)" class="page-item">
+                                <a class="page-link" ng-click="pager.page = i-1" href="#">{{i}}</a>
+                            </li>
+                            <li class="page-item"><a id="next" class="page-link" ng-click="pager.next()">Next</a></li>
+                        </ul>
                     </div>
                     <div class="modal" id="voucher">
                         <div class="modal-dialog">

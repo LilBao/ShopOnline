@@ -109,4 +109,35 @@ app.controller('myCtrl', function ($scope, $http) {
 
     $scope.loadCate();
     $scope.loadProduct();
+
+    $scope.pager={
+        page:0,
+        size:5,
+        get items(){
+            var start = this.page * this.size;
+            return $scope.listProduct.slice(start,start+this.size)
+        },
+        get count(){
+            return Math.ceil(1* $scope.listProduct.length / this.size)
+        },
+        prev(){
+            this.page--;
+            if(this.page <0){
+                this.page = this.count-1; 
+            }
+        },
+        next(){
+            this.page++;
+            if(this.page >= this.count){
+                this.page=0;
+            }
+        },
+        getNumbers(n) {
+            var rangeArray = [];
+            for (var i = 1; i <= n; i++) {
+                rangeArray.push(i);
+            }
+            return rangeArray;
+        }
+    }
 })

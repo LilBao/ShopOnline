@@ -92,4 +92,35 @@ app.controller('myCtrl', function ($scope, $http) {
     $scope.load();
     $scope.load1();
     $scope.load3();
+
+    $scope.pager={
+        page: 0,
+        size: 5,
+        items(list){
+            var start = this.page * this.size;
+            return list.slice(start,start+this.size)
+        },
+        count(list){
+            return Math.ceil(1.0* list.length / this.size)
+        },
+        prev(){
+            this.page--;
+            if(this.page <0){
+                this.page = 0; 
+            }
+        },
+        next(list){
+            this.page++;
+            if(this.page >= this.count(list)){
+                this.page=this.count(list)-1;
+            }
+        },
+        getNumbers(n) {
+            var rangeArray = [];
+            for (var i = 1; i <= n; i++) {
+                rangeArray.push(i);
+            }
+            return rangeArray;
+        }
+    }
 })

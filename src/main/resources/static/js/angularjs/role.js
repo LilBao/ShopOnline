@@ -62,7 +62,6 @@ app.controller("myCtrl",function($scope,$http){
     $scope.listAcc=[]
     $http.get(host+"authorities").then(resp => {
         $scope.db = resp.data;
-        console.log(resp.data)
     })
    
     $scope.indexOf = function(username, role){
@@ -84,6 +83,37 @@ app.controller("myCtrl",function($scope,$http){
             $http.post(host+'authorities',authority).then(resp => {
                 $scope.db.authorities.push(resp.data);
             })
+        }
+    }
+
+    $scope.pager={
+        page: 0,
+        size: 10,
+        get items(){
+            var start = this.page * this.size;
+            return $scope.db.accounts.slice(start,start+this.size)
+        },
+        get count(){
+            return Math.ceil(1.0* $scope.db.accounts.length / this.size)
+        },
+        prev(){
+            this.page--;
+            if(this.page <0){
+                this.page = 0; 
+            }
+        },
+        next(){
+            this.page++;
+            if(this.page >= this.count){
+                this.page=this.count-1;
+            }
+        },
+        getNumbers(n) {
+            var rangeArray = [];
+            for (var i = 1; i <= n; i++) {
+                rangeArray.push(i);
+            }
+            return rangeArray;
         }
     }
 })

@@ -57,6 +57,36 @@ app.controller('myCtrl', function ($scope, $http) {
 
         })
     }
-
     $scope.loadAll();
+
+    $scope.pager={
+        page: 0,
+        size: 10,
+        get items(){
+            var start = this.page * this.size;
+            return $scope.listCoupon.slice(start,start+this.size)
+        },
+        get count(){
+            return Math.ceil(1.0* $scope.listCoupon.length / this.size)
+        },
+        prev(){
+            this.page--;
+            if(this.page <0){
+                this.page = 0; 
+            }
+        },
+        next(list){
+            this.page++;
+            if(this.page >= this.count){
+                this.page=this.count-1;
+            }
+        },
+        getNumbers(n) {
+            var rangeArray = [];
+            for (var i = 1; i <= n; i++) {
+                rangeArray.push(i);
+            }
+            return rangeArray;
+        }
+    }
 })
