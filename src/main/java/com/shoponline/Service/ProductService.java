@@ -2,6 +2,8 @@ package com.shoponline.Service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.shoponline.Entity.Product;
 
 public interface ProductService {
@@ -10,12 +12,12 @@ public interface ProductService {
 	List<Product> getAll();
 	Product getOne(Integer id);
 	Boolean existsById(Integer id);
-	List<Product> getByCondition(String cate);
 	Product getNew();
 	List<Product> get2Hot();
 	List<Product> getAllNotNull();
 	List<Product> getHotList(Integer productid);
 	List<Product> getSaleList(Integer productid);
 	List<Product> getByKeyword(String key);
-
+	Page<Product> getByConditions(String cate,Integer pageNo, Integer pageSize, String sortField, String sortDirection, Integer size, Float minPrice, Float maxPrice);
+	List<Product> getByCondition(String cate,Integer productid);
 }

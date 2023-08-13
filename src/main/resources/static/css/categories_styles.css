@@ -614,7 +614,7 @@ section
 	height: 40px;
 	line-height: 40px;
 	border-bottom: solid 1px #dddddd;
-	color: #51545f;
+	color: white;
 	-webkit-transition: opacity 0.3s ease;
 	-moz-transition: opacity 0.3s ease;
 	-ms-transition: opacity 0.3s ease;

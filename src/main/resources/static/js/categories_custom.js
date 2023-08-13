@@ -345,8 +345,8 @@ jQuery(document).ready(function($)
 		{
 			range: true,
 			min: 0,
-			max: 1000,
-			values: [ 0, 580 ],
+			max: 20000000,
+			values: [ 0, 20000000 ],
 			slide: function( event, ui )
 			{
 				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
@@ -356,9 +356,49 @@ jQuery(document).ready(function($)
 		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
     }
 
+
     /* 
 
 	8. Init Checkboxes
-
+	
 	*/
+	function initCheckboxes()
+    {
+    	if($('.checkboxes li').length)
+    	{
+    		var boxes = $('.checkboxes li');
+
+    		boxes.each(function()
+    		{
+    			var box = $(this);
+
+    			box.on('click', function()
+    			{
+    				if(box.hasClass('active'))
+    				{
+    					box.find('i').removeClass('fa-square');
+    					box.find('i').addClass('fa-square-o');
+    					box.toggleClass('active');
+    				}
+    				else
+    				{
+    					box.find('i').removeClass('fa-square-o');
+    					box.find('i').addClass('fa-square');
+    					box.toggleClass('active');
+    				}
+    				// box.toggleClass('active');
+    			});
+    		});
+
+    		if($('.show_more').length)
+    		{
+    			var checkboxes = $('.checkboxes');
+
+    			$('.show_more').on('click', function()
+    			{
+    				checkboxes.toggleClass('active');
+    			});
+    		}
+    	};
+    }
 });

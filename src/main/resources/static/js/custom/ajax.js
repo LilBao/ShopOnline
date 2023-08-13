@@ -5,7 +5,7 @@ $(document).ready(function () {
             type: 'get',
             success: function (data) {
                 $('#detail').html($(data).find('#detail').children());
-                
+
                 // Dòng này sẽ lấy scope của phần tử có id="detail" sử dụng AngularJS.
                 var scope = angular.element($('#detail')).scope();
 
@@ -19,8 +19,8 @@ $(document).ready(function () {
     }
 
     window.addWishList = function (auth, idPrd) {
-        if(auth==null){
-            window.location.href="/auth";
+        if (auth == null) {
+            window.location.href = "/auth";
         }
         $.ajax({
             url: '/api/addWishlist?auth=' + auth + '&idProduct=' + idPrd,
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     window.unLike = function (id) {
         $.ajax({
-            url: '/api/wishlist/'+ id,
+            url: '/api/wishlist/' + id,
             type: 'delete',
             success: function (data) {
                 alert("Unlike successful");
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     window.deleteAccount = function (username) {
         $.ajax({
-            url: '/admin-account/delete/'+ username,
+            url: '/admin-account/delete/' + username,
             type: 'get',
             success: function (data) {
                 $('#tblAccount').html($(data).find('#tblAccount').children());
@@ -53,10 +53,10 @@ $(document).ready(function () {
     }
 
     window.changeInfor = function () {
-        var address =$('#addressChange').val;
-        var phone =$('#phoneChange').val;
+        var address = $('#addressChange').val;
+        var phone = $('#phoneChange').val;
         $.ajax({
-            url: 'change-infor?address='+ address+'&phone='+phone,
+            url: 'change-infor?address=' + address + '&phone=' + phone,
             type: 'get',
             success: function (data) {
                 $('#changeInfor').html($(data).find('#changeInfor').children());
@@ -66,10 +66,22 @@ $(document).ready(function () {
 
     window.searchProduct = function (key) {
         $.ajax({
-            url: 'search?keyword='+ key,
+            url: 'search?keyword=' + key,
             type: 'get',
             success: function (data) {
                 $('#resultcontent').html($(data).find('#resultcontent').children());
+            }
+        })
+    }
+
+    window.sort = function (cate,pageNo,pageSize,sortField,sortDir, size, min, max) {
+        $.ajax({
+            url: '/product-collections?cate=' + cate + '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir + '&size=' + size+'&min=' + min+'&max=' + max,
+            type: 'get',
+            success: function(data){
+                $('#product').html($(data).find('#product').children());
+                $.getScript('../js/categories_custom.js', function() {
+                });  
             }
         })
     }

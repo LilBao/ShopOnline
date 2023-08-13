@@ -57,7 +57,7 @@ public class DetailPrdController {
 		model.addAttribute("idDetail", detail.getId());
 		model.addAttribute("product", prod);
 		
-		model.addAttribute("listRelated", productSer.getByCondition(prod.getCategory().getName()));
+		model.addAttribute("listRelated", productSer.getByCondition(prod.getCategory().getName(),prod.getProductid()));
 		model.addAttribute("listHot", productSer.getHotList(prod.getProductid()));
 		model.addAttribute("listSale", productSer.getSaleList(prod.getProductid()));
 		model.addAttribute("listFeedback", feedbackSer.getByProduct(prod.getProductid()));
