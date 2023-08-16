@@ -35,13 +35,13 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Code</th>
-                                    <th>Value</th>
-                                    <th>Type</th>
-                                    <th>Quatity</th>
-                                    <th>Date-end</th>
-                                    <th>Action</th>
+                                    <th ng-click="sortNumber('id')">ID</th>
+                                    <th ng-click="sort('code')">Code</th>
+                                    <th ng-click="sortNumber('value')">Value</th>
+                                    <th ng-click="sort('type')">Type</th>
+                                    <th ng-click="sortNumber('quantity')">Quatity</th>
+                                    <th ng-click="sort('dateend')">Date-end</th>
+                                    <th >Action</th>
                                 </tr>
                             </thead>
                             <tbody>

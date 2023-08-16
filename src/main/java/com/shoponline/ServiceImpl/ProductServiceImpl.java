@@ -79,8 +79,10 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> getByKeyword(String key) {
-		return dao.getByKey(key);
+	public Page<Product> getByKeyword(String key,Integer pageNo, Integer pageSize, String sortField,String sortDirection) {
+		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+		return dao.getByKey(key,pageable);
 	}
 
 	@Override

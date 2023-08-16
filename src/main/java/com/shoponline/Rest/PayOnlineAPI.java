@@ -41,7 +41,7 @@ public class PayOnlineAPI {
 		String vnp_Version = PayOnlineConfig.vnp_Version;
         String vnp_Command = PayOnlineConfig.vnp_Command;
 //        String orderType = req.getParameter("ordertype");
-        //long amount = total*100;
+        long amount = total*100;
         
         String vnp_TxnRef = PayOnlineConfig.getRandomNumber(8);
         String vnp_IpAddr = PayOnlineConfig.getIpAddress(req);
@@ -51,7 +51,7 @@ public class PayOnlineAPI {
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
-        vnp_Params.put("vnp_Amount", String.valueOf(total));
+        vnp_Params.put("vnp_Amount", String.valueOf(amount));
         vnp_Params.put("vnp_CurrCode", "VND");  
         vnp_Params.put("vnp_BankCode", "");
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);

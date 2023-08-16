@@ -1,6 +1,7 @@
 package com.shoponline.Entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class Account implements Serializable{
 	private String avatar;
 	private String address;
 	private String phone;
+	private String token;
+	private LocalDateTime expiredtoken;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "account",fetch = FetchType.EAGER)

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoponline.Service.AccountService;
+import com.shoponline.Service.ForgotPassService;
 import com.shoponline.ServiceImpl.UserService;
 
 @Controller
@@ -20,6 +21,9 @@ public class AuthController {
 	
 	@Autowired
 	UserService userdetailService;
+	
+	@Autowired
+	ForgotPassService forgotSer;
 	
 	@RequestMapping("/auth")
 	public String viewlogin(Model model,@RequestParam("error") Optional<String> error) {
@@ -47,5 +51,26 @@ public class AuthController {
 	public String successOAuth(OAuth2AuthenticationToken token) {
 		userdetailService.loginFromOAuth2(token);
 		return "redirect:/index";
+	}
+	
+	@GetMapping("/forgot-password")
+	public String view(@RequestParam("username") String username) {
+		forgotSer.requestPasswordReset(username);
+		return "Auth";
+	}
+	
+	@GetMapping("/verification")
+	public String verify(Model model,@RequestParam("token") String token) {
+		model.addAttribute("token", token);
+		return "verify";
+	}
+	
+	@GetMapping("/verify-newpass")
+	public String verify(@RequestParam("token") String token,@RequestParam("newpassword") String newpassword,@RequestParam("confirm") String confirm) {
+		if(confirm.equals(newpassword)) {
+			forgotSer.resetPassword(token, newpassword);
+			return "redirect:/auth";
+		}
+		return "verify";
 	}
 }

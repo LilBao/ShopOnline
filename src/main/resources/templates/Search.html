@@ -45,7 +45,7 @@
 						</ul>
 					</div>
 					<div class="main_content">
-						<div class="products_iso">
+						<div class="products_iso" id="product_search">
 							<div class="row">
 								<div class="col">
 									<div class="product_sorting_container product_sorting_container_top">
@@ -53,36 +53,34 @@
 											<li>
 												<span class="type_sorting_text">Default Sorting</span>
 												<i class="fa fa-angle-down"></i>
-												<ul class="sorting_type">
+												<ul class="sorting_type" style="z-index: 2;">
 													<li class="type_sorting_btn"
 														data-isotope-option='{ "sortBy": "original-order" }'>
 														<span>Default Sorting</span></li>
-													<li class="type_sorting_btn"
-														data-isotope-option='{ "sortBy": "price" }'><span>Price</span>
-													</li>
-													<li class="type_sorting_btn"
-														data-isotope-option='{ "sortBy": "name" }'><span>Product
-															Name</span></li>
+														<li class="type_sorting_btn" th:onclick="sortByKey([[${key}]],[[${pageNo}]],[[${pageSize}]],'price',[[${sortDir}]])"><span>Price</span></li>
+														<li class="type_sorting_btn" th:onclick="sortByKey([[${key}]],[[${pageNo}]],[[${pageSize}]],'name',[[${sortDir}]])"><span>Product Name</span></li>
 												</ul>
 											</li>
 											<li>
 												<span>Show</span>
 												<span class="num_sorting_text">6</span>
 												<i class="fa fa-angle-down"></i>
-												<ul class="sorting_num">
-													<li class="num_sorting_btn"><span>6</span></li>
-													<li class="num_sorting_btn"><span>12</span></li>
-													<li class="num_sorting_btn"><span>24</span></li>
+												<ul class="sorting_num" style="z-index: 2;">
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],6,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>6</span></li>
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],12,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>12</span></li>
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],24,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>24</span></li>
 												</ul>
 											</li>
 										</ul>
 										<div class="pages d-flex flex-row align-items-center">
 											<div class="page_current">
-												<span>1</span>
+												<span>[[${pageNo}]]</span>
+												<ul class="page_selection ps-0 pe-4" style="z-index: 2;">
+													<li th:each="i : ${#numbers.sequence(0, totalPages)}" th:onclick="sortByKey([[${key}]],[[${i}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]])"><a href="#">[[${i}]]</a></li>
+												</ul>
 											</div>
-											<div class="page_total"><span>of</span> 3</div>
-											<div id="next_page" class="page_next"><a href="#"><i
-														class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+											<div class="page_total"><span>of</span>[[${totalPages}]]</div>
+											<div id="next_page" class="page_next"><a th:onclick="sortByKey([[${key}]],[[${pageNo+1}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]])"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
 										</div>
 
 									</div>
@@ -122,21 +120,24 @@
 												<span>Show:</span>
 												<span class="num_sorting_text">04</span>
 												<i class="fa fa-angle-down"></i>
-												<ul class="sorting_num">
-													<li class="num_sorting_btn"><span>01</span></li>
-													<li class="num_sorting_btn"><span>02</span></li>
-													<li class="num_sorting_btn"><span>03</span></li>
-													<li class="num_sorting_btn"><span>04</span></li>
+												<ul class="sorting_num" >
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],1,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>01</span></li>
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],2,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>02</span></li>
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],3,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>03</span></li>
+													<li th:onclick="sortByKey([[${key}]],[[${pageNo}]],4,[[${sortField}]],[[${sortDir}]])" class="num_sorting_btn"><span>04</span></li>
 												</ul>
 											</li>
 										</ul>
 										<span class="showing_results">Showing 1–3 of 12 results</span>
 										<div class="pages d-flex flex-row align-items-center">
 											<div class="page_current">
-												<span>1</span>
+												<span th:utext="${pageNo}"></span>
+												<ul class="page_selection ps-0 pe-4" style="z-index: 2;">
+													<li th:each="i : ${#numbers.sequence(0, totalPages)}" th:onclick="sortByKey([[${key}]],[[${i}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]])"><a>[[${i}]]</a></li>
+												</ul>
 											</div>
-											<div class="page_total"><span>of</span> 3</div>
-											<div id="next_page_1" class="page_next"><a href="#"><i
+											<div class="page_total"><span>of</span>[[${totalPages}]]</div>
+											<div id="next_page_1" class="page_next"><a th:onclick="sortByKey([[${key}]],[[${pageNo+1}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]])"><i
 														class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
 										</div>
 

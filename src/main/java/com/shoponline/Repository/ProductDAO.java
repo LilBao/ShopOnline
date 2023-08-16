@@ -36,5 +36,5 @@ public interface ProductDAO extends JpaRepository<Product, Integer> {
 	List<Product> getSale(@Param("prdid") Integer prdid);
 
 	@Query("select o from Product o where o.name like :keyword and o.status = 1")
-	List<Product> getByKey(@Param("keyword") String keyword);
+	Page<Product> getByKey(@Param("keyword") String keyword,Pageable pagenable);
 }

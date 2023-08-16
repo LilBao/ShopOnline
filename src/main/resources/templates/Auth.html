@@ -73,9 +73,9 @@
 
 				</div>
 				<div class="my-2">
-					<a href="#">Forgot your password?</a>
+					<a href="" data-bs-toggle="modal" data-bs-target="#forgot">Forgot your password?</a>
 				</div>
-
+				  <!-- The Modal -->
 				<button>Sign In</button>
 			</form>
 		</div>
@@ -94,6 +94,26 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal" id="forgot">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+		  
+				<!-- Modal Header -->
+				<div class="modal-header">
+				  <h4 class="modal-title">Modal Heading</h4>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+		  
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form th:action="@{/forgot-password}">
+						<input name="username" class="my-3 form-control" type="text" th:placeholder="Username">
+						<button>Gửi</button>
+					</form>
+				</div>
+			  </div>
+			</div>
+		  </div>
 	</div>
 
 

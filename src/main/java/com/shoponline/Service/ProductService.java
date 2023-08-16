@@ -17,7 +17,7 @@ public interface ProductService {
 	List<Product> getAllNotNull();
 	List<Product> getHotList(Integer productid);
 	List<Product> getSaleList(Integer productid);
-	List<Product> getByKeyword(String key);
+	Page<Product> getByKeyword(String key,Integer pageNo, Integer pageSize, String sortField, String sortDirection);
 	Page<Product> getByConditions(String cate,Integer pageNo, Integer pageSize, String sortField, String sortDirection, Integer size, Float minPrice, Float maxPrice);
 	List<Product> getByCondition(String cate,Integer productid);
 }

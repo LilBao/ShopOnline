@@ -85,4 +85,13 @@ $(document).ready(function () {
             }
         })
     }
+    window.sortByKey = function (key,pageNo,pageSize,sortField,sortDir) {
+        $.ajax({
+            url: '/search?keyword=' + key + '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir,
+            type: 'get',
+            success: function(data){
+                $('#product_search').html($(data).find('#product_search').children()); 
+            }
+        })
+    }
 })

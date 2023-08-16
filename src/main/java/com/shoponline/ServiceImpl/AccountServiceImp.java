@@ -39,5 +39,15 @@ public class AccountServiceImp implements AccountService{
 	public Boolean existsById(String username) {
 		return dao.existsById(username);
 	}
+
+	@Override
+	public Account findByToken(String token) {
+		return dao.findByToken(token);
+	}
+
+	@Override
+	public Account findByEmail(String email) {
+		return dao.findByEmail(email);
+	}
 	
 }

@@ -39,7 +39,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().cors().disable();
 		
 		// Phân quyền sử dụng
-		http.authorizeRequests().antMatchers("/settings","/feedback/*").authenticated()
+		http.authorizeRequests().antMatchers("/settings","/feedback/*","/api/addWishlist").authenticated()
 								.anyRequest().permitAll();
 		
 		// Giao diện đăng nhập

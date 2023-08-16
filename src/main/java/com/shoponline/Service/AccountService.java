@@ -10,4 +10,6 @@ public interface AccountService {
 	List<Account> getAll();
 	Account getOne(String username);
 	Boolean existsById(String username);
+	Account findByToken(String token);
+	Account findByEmail(String email);
 }

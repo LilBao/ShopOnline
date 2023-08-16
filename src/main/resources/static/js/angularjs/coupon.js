@@ -59,6 +59,40 @@ app.controller('myCtrl', function ($scope, $http) {
     }
     $scope.loadAll();
 
+
+    $scope.importExcel=function(file){
+        var reader = new FileReader();
+        reader.onloadend = async () => {
+            var workbook = new ExcelJS.Workbook();
+            await workbook.xlsx.load(reader.result);
+            const worksheet = workbook.getWorksheet('Sheet1');
+            worksheet.eachRow((row,index) => {
+                if(index > 1){
+                    code: row.getCell(1).value;
+                    quantity : +row.getCell(2).value;
+                }
+            })
+        };
+        reader.readAsArrayBuffer(file[0]);
+    }
+
+    $scope.sort = function (field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                $scope.listCoupon.sort((a, b) => a[field].localeCompare(b[field]))
+            } else {
+                $scope.listCoupon.sort((a, b) => b[field].localeCompare(a[field]))
+            }
+    }
+    $scope.sortNumber = function (field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                $scope.listCoupon.sort((a, b) => a[field] - (b[field]))
+            } else {
+                $scope.listCoupon.sort((a, b) => b[field] - (a[field]))
+            }
+    }
+
     $scope.pager={
         page: 0,
         size: 10,

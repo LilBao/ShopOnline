@@ -128,6 +128,27 @@ app.controller('myCtrl', function ($scope, $http) {
                     ],
                 }]
             },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                    x: {
+                        title: false
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
         });
     })
     // chart topPrdFavor
@@ -155,6 +176,27 @@ app.controller('myCtrl', function ($scope, $http) {
                     borderColor: '#777',
                     hoverBorderColor: '#000'
                 }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                    x: {
+                        title: false
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
             }
         });
     })
@@ -185,9 +227,21 @@ app.controller('myCtrl', function ($scope, $http) {
                 }]
             },
             options: {
+                animation: {
+                    tension: {
+                        duration: 1000,
+                        easing: 'linear',
+                        from: 1,
+                        to: 0,
+                        loop: true,
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true
+                    },
+                    x: {
+                        title: false
                     }
                 },
                 layout: {

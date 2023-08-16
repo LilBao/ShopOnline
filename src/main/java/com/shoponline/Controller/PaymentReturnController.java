@@ -53,7 +53,7 @@ public class PaymentReturnController {
     			model.addAttribute("auth",auth.getName());
     			order.setAccount(accSer.getOne(auth.getName()));
     		}    
-            order.setTotal(amount);
+            order.setTotal(amount/100);
             order.setSubtotal(subtotal);
             order.setDiscount(discount);
             
