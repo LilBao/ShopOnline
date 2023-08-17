@@ -1,4 +1,5 @@
 package com.shoponline.Config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 
 import com.shoponline.ServiceImpl.UserService;
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -23,53 +23,45 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Autowired
 	UserService userdetailService;
+
 	/*--Quản lý người dữ liệu người sử dụng--*/
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userdetailService);
 	}
-	
+
 	/*--Phân quyền sử dụng và hình thức đăng nhập--*/
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// CSRF, CORS
 		http.csrf().disable().cors().disable();
-		
+
 		// Phân quyền sử dụng
-		http.authorizeRequests().antMatchers("/settings","/feedback/*","/api/addWishlist").authenticated()
-								.anyRequest().permitAll();
-		
+		http.authorizeRequests().antMatchers("/settings", "/feedback/*", "/api/addWishlist").authenticated()
+				.antMatchers("/admin-index", "/admin-category", "/admin-account", "/admin-product", "/admin-product-detail",
+							"/admin-coupon", "/admin-orders").hasAnyRole("STAFF","DIR")
+				.antMatchers("/admin-statistic").hasRole("DIR")
+				.anyRequest().permitAll();
+
 		// Giao diện đăng nhập
-		http.formLogin()
-			.loginPage("/auth")
-			.loginProcessingUrl("/auth/login")
-			.defaultSuccessUrl("/index", false)
-			.failureUrl("/auth/login/error")
-			.usernameParameter("username") 
-			.passwordParameter("password"); 
-		http.rememberMe()
-			.rememberMeParameter("remember");
-		
+		http.formLogin().loginPage("/auth").loginProcessingUrl("/auth/login").defaultSuccessUrl("/index", false)
+				.failureUrl("/auth/login/error").usernameParameter("username").passwordParameter("password");
+		http.rememberMe().rememberMeParameter("remember");
+
 		// Đăng xuất
-		http.logout()
-			.logoutUrl("/auth/logoff") 
-			.logoutSuccessUrl("/index")
-			.addLogoutHandler(new SecurityContextLogoutHandler())
-			.clearAuthentication(true);;	
-		
-		
+		http.logout().logoutUrl("/auth/logoff").logoutSuccessUrl("/index")
+				.addLogoutHandler(new SecurityContextLogoutHandler()).clearAuthentication(true);
+		;
+
 		// Điều khiển lỗi truy cập không đúng vai trò
 		http.exceptionHandling().accessDeniedPage("/auth/access/denied");
-		
-		//đăng nhập author2
-		http.oauth2Login().loginPage("/auth")
-						  .defaultSuccessUrl("/oauth2/login/success",true)
-						  .failureUrl("/auth/login/error")
-						  .authorizationEndpoint()
-						  .baseUri("/oauth2/authorization");
+
+		// đăng nhập author2
+		http.oauth2Login().loginPage("/auth").defaultSuccessUrl("/oauth2/login/success", true)
+				.failureUrl("/auth/login/error").authorizationEndpoint().baseUri("/oauth2/authorization");
 	}
-	
+
 }

@@ -4,25 +4,25 @@
                         "img": "bannerKhuyen.jpg",
                         "title": "KHUYÊN TAI",
                         "btn": "Xem Thêm",
-                        "href": "/product-collections/Earrings"
+                        "href": "/product-collections?cate=Earrings"
                 },
                 {
                         "img": "bannerNhan.jpg",
                         "title": "NHẪN",
                         "btn": "Xem Thêm",
-                        "href": "/product-collections/Ring"
+                        "href": "/product-collections?cate=Ring"
                 },
                 {
                         "img": "bannerDayChuyen.jpg",
                         "title": "DÂY CHUYỀN",
                         "btn": "Xem Thêm",
-                        "href": "/product-collections/Necklace"
+                        "href": "/product-collections?cate=Necklace"
                 },
                 {
                         "img": "bannerVong.jpg",
                         "title": "VÒNG",
                         "btn": "Xem Thêm",
-                        "href": "/product-collections/Bracelet"
+                        "href": "/product-collections?cate=Bracelet"
                 }
         ],
         "bannerjs": [

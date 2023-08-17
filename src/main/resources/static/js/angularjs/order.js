@@ -89,6 +89,24 @@ app.controller('myCtrl', function ($scope, $http) {
             console.log("that bai");
         })
     }
+
+    $scope.sort = function (list,field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                list.sort((a, b) => a[field].localeCompare(b[field]))
+            } else {
+                list.sort((a, b) => b[field].localeCompare(a[field]))
+            }
+    }
+    $scope.sortNumber = function (list,field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                list.sort((a, b) => a[field] - (b[field]))
+            } else {
+                list.sort((a, b) => b[field] - (a[field]))
+            }
+    }
+
     $scope.load();
     $scope.load1();
     $scope.load3();

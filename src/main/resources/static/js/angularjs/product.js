@@ -103,6 +103,23 @@ app.controller('myCtrl', function ($scope, $http) {
         return file;
     }
 
+    $scope.sort = function (field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                $scope.listProduct.sort((a, b) => a[field].localeCompare(b[field]))
+            } else {
+                $scope.listProduct.sort((a, b) => b[field].localeCompare(a[field]))
+            }
+    }
+    $scope.sortNumber = function (field) {
+        $scope.direction = $scope.direction === "asc" ? "desc" : "asc";
+            if ($scope.direction === "asc") {
+                $scope.listProduct.sort((a, b) => a[field] - (b[field]))
+            } else {
+                $scope.listProduct.sort((a, b) => b[field] - (a[field]))
+            }
+    }
+
     $scope.readFile = function (files) {
         return host+"file/images/"+files;
     }

@@ -14,53 +14,53 @@
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-					<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+					<img th:src="@{|/api/file/avatar/${session['avatar']}|}" class="rounded-circle"
 						height="22" alt="Portrait of a Woman" loading="lazy" />
 				</a>
-				<ul class="dropdown-menu dropdown-menu-end w-50">
-					<li>
-						<a class="dropdown-item" href="#">
-							<c:if test="${not empty sessionScope.us}">
-								<div class="d-flex">
-									<div class="flex-shrink-0 me-3">
-										<div class="">
-											<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-												height="50" class="w-15 rounded-circle" />
-										</div>
-									</div>
-									<div class="flex-grow-1">
-										<span class="fw-semibold d-block">${sessionScope.us.fullname}</span>
-										<small class="text-muted">Admin</small>
-									</div>
-								</div>
-							</c:if>
-						</a>
-					</li>
-					<li>
-						<div class="dropdown-divider"></div>
-					</li>
-					<li>
-						<a class="dropdown-item" href="/PS24728_NguyenVanBao_ASM/edit-profile">
-							<i class="bx bx-user me-2"></i>
-							<span class="align-middle">My Profile</span>
-						</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">
-							<i class="bx bx-cog me-2"></i>
-							<span class="align-middle">Settings</span>
-						</a>
-					</li>
-					<li>
-						<div class="dropdown-divider"></div>
-					</li>
-					<li>
-						<a class="dropdown-item" href="/PS24728_NguyenVanBao_ASM/sign-out">
-							<i class="bx bx-power-off me-2"></i>
-							<span class="align-middle">Log Out</span>
-						</a>
-					</li>
-				</ul>
+				<ul class="settings dropdown-menu dropdown-menu-end w-50">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="">
+                                        <img th:src="@{|/api/file/avatar/${session['avatar']}|}" height="50"
+                                            class="w-15 rounded-circle" />
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="fw-semibold d-block">[[${#authentication.name}]]</span>
+                                    <div th:each="item : ${#authentication.authorities}">
+                                        <small class="text-muted">[[${item}]]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{/settings}">
+                            <i class="bx bx-user me-2"></i>
+                            <span class="align-middle">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{/index}">
+                            <i class="bx bx-cog me-2"></i>
+                            <span class="align-middle">Bussiness</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{|/auth/logoff|}">
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">Log Out</span>
+                        </a>
+                    </li>
+                </ul>
 			</li>
 		</ul>
 	</div>

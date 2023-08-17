@@ -41,7 +41,7 @@
 						<ul>
 							<li><a th:href="@{|/index|}">Home</a></li>
 							<li class="active"><a th:href="@{|/index|}"><i class="fa fa-angle-right"
-										aria-hidden="true"></i>Men's</a></li>
+										aria-hidden="true"></i>[[${cate}]]</a></li>
 						</ul>
 					</div>
 
@@ -67,11 +67,10 @@
 								<h5>Filter by Price</h5>
 							</div>
 							<p>
-								<input th:onchange="console.log(document.getElementById('amount').innerText)" type="text" id="amount" readonly
-									style="border:0; color:#f6931f; font-weight:bold;">
+								<input  type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
 							</p>
 							<div id="slider-range"></div>
-							<div class="filter_button"><span>filter</span></div>
+							<div class="filter_button" th:onclick="sort([[${cate}]],[[${pageNo}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]],[[${size}]],[[${min}]],[[${max}]])"><span>filter</span></div>
 						</div>
 
 						<!-- Sizes -->
@@ -145,7 +144,7 @@
 												</ul>
 											</div>
 											<div class="page_total"><span>of</span>[[${totalPages}]]</div>
-											<div id="next_page" class="page_next"><a onclick="sort('${cate}','${pageNo}+1','${pageSize}','${sortField}','${sortDir}','${size}','${min}','${max}')"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+											<div th:if="${pageNo} < ${totalPages}" id="next_page" class="page_next"><a th:onclick="sort([[${cate}]],[[${pageNo+1}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]],[[${size}]],[[${min}]],[[${max}]])"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
 										</div>
 
 									</div>
@@ -202,7 +201,7 @@
 												</ul>
 											</div>
 											<div class="page_total"><span>of</span>[[${totalPages}]]</div>
-											<div id="next_page_1" class="page_next"><a href="#"><i
+											<div id="next_page_1" class="page_next"><a th:onclick="sort([[${cate}]],[[${pageNo+1}]],[[${pageSize}]],[[${sortField}]],[[${sortDir}]],[[${size}]],[[${min}]],[[${max}]])"><i
 														class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
 										</div>
 

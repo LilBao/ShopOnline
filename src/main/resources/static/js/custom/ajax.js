@@ -74,23 +74,28 @@ $(document).ready(function () {
         })
     }
 
-    window.sort = function (cate,pageNo,pageSize,sortField,sortDir, size, min, max) {
+    window.sort = function (cate, pageNo, pageSize, sortField, sortDir, size, min, max) {
+        var priceRange = $('#amount').val();
+        min = parseFloat(priceRange.split('-')[0].replace('$', ''));
+        max = parseFloat(priceRange.split('-')[1].replace('$', ''));
+        console.log(min)
+        console.log(max)
         $.ajax({
-            url: '/product-collections?cate=' + cate + '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir + '&size=' + size+'&min=' + min+'&max=' + max,
+            url: '/product-collections?cate=' + cate + '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir + '&size=' + size + '&min=' + min + '&max=' + max,
             type: 'get',
-            success: function(data){
+            success: function (data) {
                 $('#product').html($(data).find('#product').children());
-                $.getScript('../js/categories_custom.js', function() {
-                });  
+                $.getScript('../js/categories_custom.js', function () {
+                });
             }
         })
     }
-    window.sortByKey = function (key,pageNo,pageSize,sortField,sortDir) {
+    window.sortByKey = function (key, pageNo, pageSize, sortField, sortDir) {
         $.ajax({
             url: '/search?keyword=' + key + '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sortField=' + sortField + '&sortDir=' + sortDir,
             type: 'get',
-            success: function(data){
-                $('#product_search').html($(data).find('#product_search').children()); 
+            success: function (data) {
+                $('#product_search').html($(data).find('#product_search').children());
             }
         })
     }

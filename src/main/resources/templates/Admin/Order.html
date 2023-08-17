@@ -29,7 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#approve">Approve</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${#request.isUserInRole('DIR')}">
                     <a class="nav-link" data-bs-toggle="tab" href="#decline">Decline</a>
                 </li>
             </ul>
@@ -48,23 +48,17 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a>
+                                                <th><a ng-click="sortNumber(listOrder,'orderid')">ID</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">name</a>
+                                                <th><a ng-click="sort(listOrder,'name')">name</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">address</a>
+                                                <th><a ng-click="sort(listOrder,'address')">address</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">email</a>
+                                                <th><a ng-click="sort(listOrder,'email')">email</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">phone</a>
+                                                <th><a ng-click="sort(listOrder,'phone')">phone</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">total</a>
+                                                <th><a ng-click="sortNumber(listOrder,'total')">total</a>
                                                 </th>
                                                 <th class="text-center">Action</th>
                                             </tr>
@@ -108,23 +102,17 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a>
+                                                <th><a ng-click="sortNumber(listOrderApprove,'orderid')">ID</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">name</a>
+                                                <th><a ng-click="sort(listOrderApprove,'name')">name</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">address</a>
+                                                <th><a ng-click="sort(listOrderApprove,'address')">address</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">email</a>
+                                                <th><a ng-click="sort(listOrderApprove,'email')">email</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">phone</a>
+                                                <th><a ng-click="sort(listOrderApprove,'phone')">phone</a>
                                                 </th>
-                                                <th><a
-                                                        href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">total</a>
+                                                <th><a ng-click="sortNumber(listOrderApprove,'total')">total</a>
                                                 </th>
                                                 <th class="text-center">Action</th>
                                             </tr>
@@ -166,23 +154,17 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${pageNo}&sortField=id&sortDir=${reverseSortDir}">ID</a>
+                                        <th><a ng-click="sortNumber(listOrderDecline,'orderid')">ID</a>
                                         </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">name</a>
+                                        <th><a ng-click="sort(listOrderDecline,'name')">name</a>
                                         </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">address</a>
+                                        <th><a ng-click="sort(listOrderDecline,'address')">address</a>
                                         </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">email</a>
+                                        <th><a ng-click="sort(listOrderDecline,'email')">email</a>
                                         </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">phone</a>
+                                        <th><a ng-click="sort(listOrderDecline,'phone')">phone</a>
                                         </th>
-                                        <th><a
-                                                href="${pageContext.request.contextPath}/index/category?page=${page}&sortField=name&sortDir=${reverseSortDir}">total</a>
+                                        <th><a ng-click="sortNumber(listOrderDecline,'total')">total</a>
                                         </th>
                                         <th class="text-center">Action</th>
                                     </tr>

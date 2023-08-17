@@ -39,7 +39,7 @@ public class AuthController {
 
 	@RequestMapping("/auth/access/denied")
 	public String denied(Model model){
-		return "redirect:/auth?error=Your are not permission!";
+		return "redirect:/auth?error=You are not authorized!";
 	}
 	
 	@GetMapping("/oauth2/login")
