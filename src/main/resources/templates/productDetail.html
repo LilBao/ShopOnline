@@ -280,7 +280,7 @@
 		<div th:each="item : ${listFeedback}">
 			<hr>
 			<div class="d-flex justify-content-between">
-				<div class="d-flex">
+				<div th:if="${item.rate !=null}" class="d-flex">
 					<i th:each="i : ${#numbers.sequence(1, item.rate)}" class="bi bi-star-fill"></i>
 				</div>
 				<p th:text="${#dates.format(item.createdate,'dd-MM-yyyy')}"></p>
